@@ -1,0 +1,362 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Scalabel User Guide &#8212; doc documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
+  </head>
+  
+  <body>
+    <div class="document">
+  
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+          <a href="http://www.scalabel.ai"><img alt="scalabel logo" src="https://s3-us-west-2.amazonaws.com/www.scalabel.ai/scalabel.svg" style="height: 100px;" /></a>
+          <ul style='font-size: 18px'>
+<li><a class="reference internal" href="#">User Guide</a><ul>
+<li><a class="reference internal" href="#data-preparation">Data Preparation</a></li>
+<li><a class="reference internal" href="#serving-data">Serving Data</a></li>
+<li><a class="reference internal" href="#launch-server">Launch Server</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-project">Create Project</a></li>
+<li><a class="reference internal" href="#d-bounding-box">2D Bounding Box</a></li>
+<li><a class="reference internal" href="#instance-segmentation">Instance Segmentation</a><ul>
+<li><a class="reference internal" href="#lane-marking">Lane Marking</a></li>
+<li><a class="reference internal" href="#drivable-area">Drivable Area</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#video-tracking">Video Tracking</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>Scalabel is an open-sourced annotation web tool brought by <a class="reference external" href="https://deepdrive.berkeley.edu/">Berkeley DeepDrive</a>.</p>
+<div class="section" id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h2>
+<p>Our tool supports both video and image annotations. We provide a script
+at <code class="docutils literal notranslate"><span class="pre">scripts/prepare_data.py</span></code> to help you prepare data.</p>
+<ul class="simple">
+<li>For the video data, we first split the video into frames at the
+specified frame rate (the default is 5fps) and then generate a yaml
+file containing the paths to the frames.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">scripts</span><span class="o">/</span><span class="n">prepare_data</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">path_to_video</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="n">output_directory</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="n">fps</span><span class="o">&gt;</span>
+<span class="o">--</span><span class="n">s3</span> <span class="o">&lt;</span><span class="n">s3_bucket_name</span><span class="o">/</span><span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The flag <code class="docutils literal notranslate"><span class="pre">--s3</span></code> is optional. If you want to upload the output frames
+and the frame list to your Amazon S3 bucket, you can specify the key to
+the bucket.</p>
+<p>We assume that the bucket is “public readable” so that the generated
+links can be directly accessed by the tool.</p>
+<p>Please refer to the
+<a class="reference external" href="http://boto3.readthedocs.io/en/latest/guide/s3-example-creating-buckets.html">doc</a>
+to configure your S3 bucket.</p>
+<ul class="simple">
+<li>For the image data, you need to specify the path to the folder that
+contains the images. If <code class="docutils literal notranslate"><span class="pre">--s3</span></code> is specified, the images will be
+uploaded to the S3 bucket as well as the yaml file that contains the
+urls to the images.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">scripts</span><span class="o">/</span><span class="n">prepare_data</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">path_to_image_folder</span><span class="o">&gt;</span>  <span class="o">--</span><span class="n">s3</span> <span class="o">&lt;</span><span class="n">s3_bucket_name</span><span class="o">/</span><span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Once obtaining the <code class="docutils literal notranslate"><span class="pre">image_list.yml</span></code>, we can proceed to create a new
+annotation project.</p>
+</div>
+<div class="section" id="serving-data">
+<h2>Serving Data<a class="headerlink" href="#serving-data" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to serve your own data on the same domain as this server,
+you may do so. This means the item_list.yml you provide at project
+creation may contain URLs to this server. Any files or directories you
+place in “app/src/” will be uploaded to the server with the prefix path
+removed. For example, say that you place a directory “images” in
+“app/src/”. If you are testing the server locally, you can specify in
+your item list URLs such as “localhost:8686/images/image_1.jpg”.</p>
+</div>
+<div class="section" id="launch-server">
+<h2>Launch Server<a class="headerlink" href="#launch-server" title="Permalink to this headline">¶</a></h2>
+<p>You can either set up the tool with the provided docker image or build the tool by yourself.</p>
+<p>Once you have the tool set up, you can open <code class="docutils literal notranslate"><span class="pre">http://localhost:8686</span></code> to
+create your annotation project.</p>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Checkout the code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">ucbdrive</span><span class="o">/</span><span class="n">scalabel</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">scalabel</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a directory to store the server data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">../</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Or, for Windows users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">..</span>\<span class="n">data</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Launch server. There are two options, either (i) to build with Docker
+or (ii) to build by yourself.</p>
+<ol class="arabic">
+<li><p class="first">Build and run a Docker image from the Dockerfile.</p>
+<p>Build by yourself</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">.</span> <span class="o">-</span><span class="n">t</span> <span class="s1">&#39;scalabel/server&#39;</span>
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">scalabel</span><span class="o">/</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>After getting the docker image, you can run the server</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docker run -it -v `pwd`/../data:/data -p 8686:8686 scalabel/server
+</pre></div>
+</div>
+</li>
+<li><p class="first">Build the server by yourself.</p>
+<ol class="arabic">
+<li><p class="first">Install GoLang. Refer to the <a class="reference external" href="https://golang.org/doc/install">instruction
+page</a> for details.</p>
+</li>
+<li><p class="first">Install GoLang dependency</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">get</span> <span class="n">gopkg</span><span class="o">.</span><span class="ow">in</span><span class="o">/</span><span class="n">yaml</span><span class="o">.</span><span class="n">v2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Compile the server</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>go build -i -o $GOPATH/bin/scalabel ./server/go
+</pre></div>
+</div>
+<p>For Windows users, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">build</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">o</span> <span class="o">%</span><span class="n">GOPATH</span><span class="o">%</span>\<span class="nb">bin</span>\<span class="n">scalabel</span><span class="o">.</span><span class="n">exe</span> <span class="o">.</span>\<span class="n">server</span>\<span class="n">go</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Note that you may choose your own path for the server executable.
+We use $GOPATH/bin/scalabel as it conforms to golang best
+practice, but if your GOPATH is not configured, this will not
+work.</p>
+<ol class="arabic" start="4">
+<li><p class="first">Specify basic configurations (e.g. the port to start the
+server, the data directory to store the image annotations, etc)
+in your own <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>. Refer to
+<code class="docutils literal notranslate"><span class="pre">app/config/default_config.yml</span></code> for the default
+configurations.</p>
+</li>
+<li><p class="first">Launch the server by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$GOPATH/bin/scalabel --config app/config/default_config.yml
+</pre></div>
+</div>
+<p>For Windows users, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">GOPATH</span><span class="o">%</span>\<span class="nb">bin</span>\<span class="n">scalabel</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">config</span> <span class="n">app</span>\<span class="n">config</span>\<span class="n">default_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you used a different server path when compiling, make sure to
+use the correct path here.</p>
+</li>
+</ol>
+</li>
+<li><p class="first">Access the server through the specifed port (we use <code class="docutils literal notranslate"><span class="pre">8686</span></code> as the
+default port specified in the <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8686</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="create-project">
+<h2>Create Project<a class="headerlink" href="#create-project" title="Permalink to this headline">¶</a></h2>
+<p>The interface of creating a new project is shown as following. We use
+the video bounding box annotation as an example.</p>
+<div class="figure" id="id1">
+<img alt="video bounding box annotation screenshot" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/create_project_video.png" />
+<p class="caption"><span class="caption-text">video bounding box annotation screenshot</span></p>
+</div>
+<p>In this case, you need to upload <code class="docutils literal notranslate"><span class="pre">image_list.yml</span></code> which contains
+either paths to the video frames or public readable urls to the frames
+in the <code class="docutils literal notranslate"><span class="pre">Item</span> <span class="pre">List</span></code>. For <code class="docutils literal notranslate"><span class="pre">Categories</span></code> and <code class="docutils literal notranslate"><span class="pre">Attributes</span></code>, you can
+upload the yaml files that contain the labels and attribute descriptions
+respectively. Please refer to <code class="docutils literal notranslate"><span class="pre">examples/</span></code> folder for more details.</p>
+<p>At this point, you can click <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">to</span> <span class="pre">Dashboard</span></code> to monitor the project,
+download results and try the annotation tool. The interface is shown as
+follows.</p>
+<div class="figure" id="id2">
+<img alt="the screenshot of the download page" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_dashboard.png" />
+<p class="caption"><span class="caption-text">the screenshot of the download page</span></p>
+</div>
+<p>If you click <code class="docutils literal notranslate"><span class="pre">task</span> <span class="pre">link</span></code>, you can go to the annotation interface and
+start your work.</p>
+<div class="figure" id="id3">
+<img alt="Task Interface" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/annotation_interface_a.png" />
+<p class="caption"><span class="caption-text">Task Interface</span></p>
+</div>
+</div>
+<div class="section" id="d-bounding-box">
+<h2>2D Bounding Box<a class="headerlink" href="#d-bounding-box" title="Permalink to this headline">¶</a></h2>
+<p>For tasks like object detection, we need to draw bounding boxes for the
+objects of interest in the image. The interface of drawing 2D bounding
+boxes is shown as follows.</p>
+<div class="figure" id="id4">
+<img alt="2D Bounding Boxes" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/image_bbox_a.png" />
+<p class="caption"><span class="caption-text">2D Bounding Boxes</span></p>
+</div>
+<p>On the left side, we show all the label categories specified in
+<code class="docutils literal notranslate"><span class="pre">categories.yml</span></code> (which you can modify to meet your demand) and also
+provide options like <code class="docutils literal notranslate"><span class="pre">Occluded</span></code> and <code class="docutils literal notranslate"><span class="pre">Truncated</span></code>. For traffic lights,
+you can also annotate their colors on the left side.</p>
+<p>Is the object too small to annotate? Try the <code class="docutils literal notranslate"><span class="pre">+</span></code> button on the top
+right. The zoom-in image is shown as follows. When zoomed in, you can
+use your mouse to move the canvas and continue to annotate another
+object.</p>
+<p>Want to delete a bounding box? Click on the bounding box to highlight it
+and then click on the <code class="docutils literal notranslate"><span class="pre">Remove</span></code> button on the bottom left.</p>
+<div class="figure" id="id5">
+<img alt="Bounding Boxes" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/image_bbox_zoom_in_a.png" />
+<p class="caption"><span class="caption-text">Bounding Boxes</span></p>
+</div>
+<p>Once finishing drawing all the bounding boxes, you can save the results
+by clicking on the <code class="docutils literal notranslate"><span class="pre">Save</span></code> button on the top right. Then the bounding
+boxes results will be saved to your data folder specified in the
+<code class="docutils literal notranslate"><span class="pre">configure.yml</span></code>.</p>
+<p>A short demo of drawing 2D bounding boxes is shown below. The video with
+higher resolution is
+<a class="reference external" href="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_bbox_caption.mp4">here</a>.</p>
+<div class="figure">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_bbox_caption_ll.gif" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_bbox_caption_ll.gif" />
+</div>
+</div>
+<div class="section" id="instance-segmentation">
+<h2>Instance Segmentation<a class="headerlink" href="#instance-segmentation" title="Permalink to this headline">¶</a></h2>
+<p>The tool also supports “instance segmentation annotation”. The interface
+is similar to the interface of 2D bounding boxes.</p>
+<div class="figure" id="id6">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/inst_seg_done.png" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/inst_seg_done.png" />
+<p class="caption"><span class="caption-text">To draw a mask of the instance, you need to draw multiple anchor
+points along the boundary of the instance and end at the initial
+point to complete the drawing.</span></p>
+</div>
+<p>A short demo of drawing instance segmentation is shown below. Please
+check out the video with higher resolution
+<a class="reference external" href="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/inst_seg_caption.mp4">here</a>.</p>
+<div class="figure">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/inst_seg_caption_ll.gif" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/inst_seg_caption_ll.gif" />
+</div>
+<p>Besides, you can enter the <strong>quick draw</strong> mode by clicking the
+<code class="docutils literal notranslate"><span class="pre">Quickdraw</span></code> on the bottom left or pressing <code class="docutils literal notranslate"><span class="pre">s</span></code> which allows the two
+instances to share the common border. Check out the video demo with
+higher resolution
+<a class="reference external" href="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/quickdraw_demo.mp4">here</a>.</p>
+<div class="figure">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/quickdraw_demo_h.gif" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/quickdraw_demo_h.gif" />
+</div>
+<p>Our tool also allows you to <strong>bezier the curve</strong> to improve the
+annotation quality. Checkout the video demo
+<a class="reference external" href="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/bezier_demo.mp4">here</a>.</p>
+<div class="figure">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/bezier_demo_h.gif" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/bezier_demo_h.gif" />
+</div>
+<div class="section" id="lane-marking">
+<h3>Lane Marking<a class="headerlink" href="#lane-marking" title="Permalink to this headline">¶</a></h3>
+<p>Lane marking is used in a similar way as the other image annotations,
+but you will need to select a different label type when you are creating
+your project. The operations are the same as those for instance
+segmentation. In this case, you won’t see a whole chuck of color filled
+in your selected area, since lane labeling is just outlining different
+sections of a street.</p>
+<p>Here is a short demo of lane marking below. Checkout the video with
+higher resolution
+<a class="reference external" href="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_caption.mp4">here</a>.</p>
+<div class="figure">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_caption_h.gif" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_caption_h.gif" />
+</div>
+</div>
+<div class="section" id="drivable-area">
+<h3>Drivable Area<a class="headerlink" href="#drivable-area" title="Permalink to this headline">¶</a></h3>
+<p>Similarly as other instance segmentation tasks, you can annotate the
+drivable area in the image. Details about the drivable area can be found
+in this <a class="reference external" href="http://bair.berkeley.edu/blog/2018/05/30/bdd/">blog</a>.</p>
+</div>
+</div>
+<div class="section" id="video-tracking">
+<h2>Video Tracking<a class="headerlink" href="#video-tracking" title="Permalink to this headline">¶</a></h2>
+<p>We also support video object tracking.</p>
+<div class="figure" id="id7">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_tracking_start.png" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_tracking_start.png" />
+<p class="caption"><span class="caption-text">Firstly, you need to draw a bounding box around the object of
+interest at the starting frame.</span></p>
+</div>
+<div class="figure" id="id8">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_tracking_end.png" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_tracking_end.png" />
+<p class="caption"><span class="caption-text">Then, continue playing the video until the ending frame. Move the
+bounding box to the ending position of the object and adjust the
+bounding box size.</span></p>
+</div>
+<p>At this point, if you replay the video, the bounding box will track its
+object and adjust its own size across different frames.</p>
+<p>Here is a short demo to track a person in the video. Please check out
+the video with higher resolution
+<a class="reference external" href="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/video_tracking_caption.mp4">here</a>.</p>
+<div class="figure">
+<img alt="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/video_tracking_caption_ll.gif" src="https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/video_tracking_caption_ll.gif" />
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2018, Berkeley DeepDrive.
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com//ucbdrive/scalabel" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
