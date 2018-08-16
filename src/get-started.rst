@@ -77,7 +77,21 @@ Setup
 
        mkdir ..\data
 
-3. Launch server. There are two options, either (i) to build with Docker
+3. Compile the Javascript code
+
+  First install the dependencies
+
+  ::
+  
+     npm install
+
+  Build the production code
+
+  ::
+
+     npx webpack --config webpack.config.js --mode=production
+
+4. Launch server. There are two options, either (i) to build with Docker
    or (ii) to build by yourself.
 
    1. Build and run a Docker image from the Dockerfile.
@@ -141,7 +155,7 @@ Setup
       If you used a different server path when compiling, make sure to
       use the correct path here.
 
-4. Access the server through the specifed port (we use ``8686`` as the
+5. Access the server through the specifed port (we use ``8686`` as the
    default port specified in the ``config.yml``)
 
    ::
