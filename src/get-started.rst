@@ -50,7 +50,7 @@ your item list URLs such as "localhost:8686/images/image\_1.jpg".
 Launch Server
 ~~~~~~~~~~~~~~
 
-You can either set up the tool with the provided docker image or build the tool by yourself. 
+You can either set up the tool with the provided docker image or build the tool by yourself.
 
 Once you have the tool set up, you can open ``http://localhost:8686`` to
 create your annotation project.
@@ -108,7 +108,8 @@ Setup
 
          ::
 
-             go get gopkg.in/yaml.v2
+             go get github.com/aws/aws-sdk-go github.com/mitchellh/mapstructure
+  gopkg.in/yaml.v2 github.com/satori/go.uuid
 
       3. Compile the server
 
