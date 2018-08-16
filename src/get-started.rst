@@ -88,12 +88,6 @@ Setup
 
           docker build . -t 'scalabel/server'
 
-      Or
-
-      ::
-
-          docker pull scalabel/server
-
       After getting the docker image, you can run the server
 
       ::
@@ -108,8 +102,7 @@ Setup
 
          ::
 
-             go get github.com/aws/aws-sdk-go github.com/mitchellh/mapstructure
-  gopkg.in/yaml.v2 github.com/satori/go.uuid
+             go get github.com/aws/aws-sdk-go github.com/mitchellh/mapstructure gopkg.in/yaml.v2 github.com/satori/go.uuid
 
       3. Compile the server
 
