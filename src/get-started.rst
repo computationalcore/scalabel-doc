@@ -42,9 +42,9 @@ Serving Data
 If you wish to serve your own data on the same domain as this server,
 you may do so. This means the item\_list.yml you provide at project
 creation may contain URLs to this server. Any files or directories you
-place in "app/src/" will be uploaded to the server with the prefix path
+place in "app/dist/" will be uploaded to the server with the prefix path
 removed. For example, say that you place a directory "images" in
-"app/src/". If you are testing the server locally, you can specify in
+"app/dist/". If you are testing the server locally, you can specify in
 your item list URLs such as "localhost:8686/images/image\_1.jpg".
 
 Launch Server
