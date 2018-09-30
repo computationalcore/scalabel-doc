@@ -7,6 +7,7 @@ Scalabel is an open-sourced annotation web tool brought by `Berkeley DeepDrive <
    :maxdepth: 2
 
    /get-started.rst
+   /data-preparation.rst
    /create-project.rst
    /2d-bb.rst
    /instance-segmentation.rst
