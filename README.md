@@ -2,7 +2,7 @@
 Install dependency
 
 ```
-pip install sphinx
+pip install sphinx sphinx_rtd_theme
 ```
 
 Build the documentation
