@@ -73,19 +73,33 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+# html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
+# html_theme_options = {
+#     'fixed_sidebar': 'true',
+#     'github_banner': 'true',
+#     'github_repo': 'ucbdrive/scalabel',
+#     "show_powered_by": 'false',
+#     "page_width": '75%',
+#     'font_size': '18px',
+# }
 html_theme_options = {
-    'fixed_sidebar': 'true',
-    'github_banner': 'true',
-    'github_repo': 'ucbdrive/scalabel',
-    "show_powered_by": 'false',
-    "page_width": '75%',
-    'font_size': '18px'
+    'canonical_url': 'https://www.scalabel.ai/doc/',
+    'analytics_id': '',
+    'logo_only': True,
+    'display_version': True,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': False,
+    # Toc options
+    'collapse_navigation': False,
+    'sticky_navigation': True,
+    'navigation_depth': 2,
+    'titles_only': False,
 }
    
 
@@ -93,6 +107,10 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Make sure the custom.css file is added.
+def setup(app):
+    app.add_stylesheet('css/custom.css')
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
