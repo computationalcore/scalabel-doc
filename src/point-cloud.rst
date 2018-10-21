@@ -14,6 +14,6 @@ However, the tool requires some knowledge of shortcut keys. To go between items,
 
 To change the size, position, and rotation of the bounding box, the box must first be selected by clicking on it or choosing it from the label list. Then, press "enter" button. Now, the user can change its position by simply clicking on it and moving the mouse around. To change the shape in the XY plane of the box, the user needs to press down s while dragging the box. To change the shape in the Z axis (the third dimension), the user can press e and repeat the same actions. To rotate, the user should press r and while clicking & dragging. Once done editing, the user can either press ESC or enter to leave the edit mode. 
 
-.. figure:: https://s3-us-west-2.amazonaws.com/www.scalabel.ai/images/pc_result.png
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/3d+BB+2.0.gif
 
 To save, simply press the save button on the upper right of the window.

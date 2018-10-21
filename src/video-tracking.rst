@@ -3,16 +3,12 @@ Video Tracking
 
 We also support video object tracking.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_tracking_start.png
+Firstly, you need to draw a bounding box around the object of interest 
+at the starting frame.
 
-   Firstly, you need to draw a bounding box around the object of
-   interest at the starting frame.
-
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/video_tracking_end.png
-
-   Then, continue playing the video until the ending frame. Move the
-   bounding box to the ending position of the object and adjust the
-   bounding box size.
+Then, continue playing the video until the ending frame. Move the
+bounding box to the ending position of the object and adjust the
+bounding box size.
 
 At this point, if you replay the video, the bounding box will track its
 object and adjust its own size across different frames.
@@ -21,6 +17,6 @@ Here is a short demo to track a person in the video. Please check out
 the video with higher resolution
 `here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/video_tracking_caption.mp4>`__.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/video_tracking_caption_ll.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d+BB+(video)+2.0.gif
 
 
