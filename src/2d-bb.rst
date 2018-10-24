@@ -5,7 +5,7 @@ For tasks like object detection, we need to draw bounding boxes for the
 objects of interest in the image. The interface of drawing 2D bounding
 boxes is shown as follows.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/image_bbox_a.png
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/image_bbox_0.2.png
    :alt: 2D Bounding Boxes
 
    2D Bounding Boxes
@@ -23,7 +23,7 @@ object.
 Want to delete a bounding box? Click on the bounding box to highlight it
 and then click on the ``Remove`` button on the bottom left.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/image_bbox_zoom_in_a.png
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/image_bbox_zoomin_0.2.png
    :alt: Bounding Boxes
 
    Bounding Boxes
