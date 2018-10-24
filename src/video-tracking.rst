@@ -1,7 +1,7 @@
 Video Tracking
 --------------
 
-We also support video object tracking.
+The tool also supports video object tracking.
 
 Firstly, you need to draw a bounding box around the object of interest 
 at the starting frame.
@@ -17,6 +17,6 @@ Here is a short demo to track a person in the video. Please check out
 the video with higher resolution
 `here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/video_tracking_caption.mp4>`__.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d+BB+(video)+2.0.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/bbox2d_tracking_0.2.gif
 
 

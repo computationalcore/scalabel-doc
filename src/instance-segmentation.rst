@@ -4,7 +4,7 @@ Instance Segmentation
 The tool also supports "instance segmentation annotation". The interface
 is similar to the interface of 2D bounding boxes.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/2d+seg+2.0.png
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/seg2d_0.2.png
 
    To draw a mask of the instance, you need to draw multiple anchor
    points along the boundary of the instance and end at the initial
@@ -14,15 +14,15 @@ A short demo of drawing instance segmentation is shown below. Please
 check out the video with higher resolution
 `here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/inst_seg_caption.mp4>`__.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d+BB+2.0.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_seg_0.2.gif
 
 To delete a polygon:
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d+Delete+2.0.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_delete_0.2.gif
 
 You can also link two polygons together:
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d+Linking+2.0.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_linking_0.2.gif
 
 Besides, you can enter the **quick draw** mode by clicking the
 ``Quickdraw`` on the bottom left or pressing ``s`` which allows the two
@@ -36,7 +36,7 @@ Our tool also allows you to **bezier the curve** to improve the
 annotation quality. Checkout the video demo
 `here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/bezier_demo.mp4>`__.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d+Bezier+2.0.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_bezier_0.2.gif
 
 Lane Marking
 ~~~~~~~~~~~~
@@ -52,7 +52,7 @@ Here is a short demo of lane marking below. Checkout the video with
 higher resolution
 `here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_caption.mp4>`__.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/Lane+Marking+2.0.gif
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_marking_0.2.gif
 
 Drivable Area
 ~~~~~~~~~~~~~
