@@ -1,6 +1,6 @@
 User Guide Index
 ================
-    
+
 Scalabel is an open-sourced annotation web tool brought by `Berkeley DeepDrive <https://deepdrive.berkeley.edu/>`__.
 
 
