@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Labeling tool</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/tether.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-104140760-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Instructions</h1>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix"
+                data-offset-top="125">
+                <li class="active"><a href="#examples">Missions and Examples</a>
+                </li>
+                <li><a href="#section-1">Annotation Standard</a></li>
+                <li><a href="#section-2">Examples</a></li>
+                <li><a href="#section-3">What's More</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-9">
+
+            <h2 id="examples">Drivable Area Annotation Technical Standard</h2>
+            <h3>Mission</h3>
+            <p>Your mission is to annotate all drivable area. Definition of 
+                drivable area is specified in the following section.</p>
+            <br>
+            <hr>
+
+            <h2 id="section-1">Annotation Standard</h2>
+            <h3>1. Labeling Policy</h3>
+            <p>The drivable area is divided into two different categories: 
+                <b>directly drivable area</b> and <b>alternatively drivable area</b>. 
+            </p>
+
+            <li><b>Directly Drivable Area</b></li>
+            <p>In our dataset, the ”directly drivable area” defines the area that the 
+            driver is currently driving on – it is also the region where the driver has 
+            priority over other cars or the “right of the way”.
+            </p>
+
+            <li><b>Alternatively Drivable Area</b></li>
+            <p>In contrast, “alternatively drivable area” is a lane the driver is 
+                currently not driving on, but could do so – via changing lanes.
+            </p>
+
+            <p>In align with our understanding, on highway or city street, where traffic 
+                is closely regulated, drivable areas are mostly within lanes. However, 
+                in residential areas, the lanes are sparse. Annotators can judge what is 
+                drivable based on the surroundings.
+            </p>
+            <br>
+            <hr>
+
+            <h2 id="section-2">Examples</h2>
+            <p> This section provides some examples of drivable areas. 
+                In the images provided in the section, <b>red</b> regions are directly 
+                drivable area and the <b>blue</b> ones are alternative.
+            </p>
+            <img src="image/drivable/drivable_01.jpg" height="45%" width="45%"></img>
+            <img src="image/drivable/drivable_02.jpg" height="45%" width="45%"></img>
+            <img src="image/drivable/drivable_03.jpg" height="45%" width="45%"></img>
+            <img src="image/drivable/drivable_04.jpg" height="45%" width="45%"></img>
+            <p> As shown in the four images above, although drivable areas can be confined 
+                within lane markings, they are also related to locations of other vehicles.
+            </p>
+
+            <img src="image/drivable/drivable_05.jpg" height="45%" width="45%"></img>
+            <img src="image/drivable/drivable_06.jpg" height="45%" width="45%"></img>
+            <img src="image/drivable/drivable_07.jpg" height="45%" width="45%"></img>
+            <img src="image/drivable/drivable_08.jpg" height="45%" width="45%"></img>
+            <p> These four images also show that some areas are perceptively drivable, even 
+                though no visible lane marking exists.
+            </p>
+            <br>
+            <hr>
+
+            <h2 id="section-3">What's More</h2>
+            <p> For details on specific labeling operations, please refer to the detailed 
+                instruction page on instance segmentations 
+                <a href="https://www.scalabel.ai/doc/instructions/seg.html">here</a>.
+            </p>
+
+            <p> For details on other labeling types, please refer to 
+                <a href="https://www.scalabel.ai/doc/"> scalabel.ai/doc/ </a> 
+                for more details and demos.
+            </p>
+
+            <p> Please report bugs or send questions to
+                <a>bdd-label-help@googlegroups.com</a>.
+            </p>
+            <hr>
+        </div>
+    </div>
+</div>
+</body>
