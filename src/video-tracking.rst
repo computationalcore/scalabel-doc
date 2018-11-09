@@ -20,7 +20,7 @@ Create a bounding box at the first frame it appears, and adjust the bounding box
 
 Ending object track
 =====================================
-For an object that disappears after certain frame, click "End Object Track" at the frame of its last occurrence. The bounding box labels after this frame will be deleted.
+For an object that disappears after certain frame, click "End Object Track" or press ``Ctrl-E`` (``Cmd-E`` for Mac users) at the frame of its last occurrence. The bounding box labels after this frame will be deleted.
 
 .. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/box2d_tracking_end-track.gif
     :width: 600px
@@ -28,7 +28,8 @@ For an object that disappears after certain frame, click "End Object Track" at t
 
 Track Linking
 =====================================
-Sometimes an object reappears in the frame due to occlusion or re-entrance, and track linking enables individual tracks to be linked as a single instance. Select a label, click "Track-Link", and click on any other tracks that you want to link with this label. The tracks you choose to link appears in dashed lines. Click "Finish Track-Link" to finish this operation.
+Sometimes an object reappears in the frame due to occlusion or re-entrance, and track linking enables individual tracks to be linked as a single instance. Select a label, click "Track-Link" or press ``Ctrl-L`` (``Cmd-L`` for Mac users), and click on any other tracks that you want to link with this label. The tracks you choose to link appears in dashed lines.
+Click "Finish Track-Link" or hit ``Enter`` to finish this operation.
 
 .. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/box2d_tracking_track-link.gif
     :width: 600px
@@ -55,7 +56,7 @@ After labeling a segmentation label in a keyframe, adjusting each vertex in a su
 
 Redrawing a segmentation label
 =====================================
-At a different frame, sometimes it is easier to redraw the entire segmentation label than adjusting each existing vertex. Press ``r`` to re-draw a segmentation label in the selected object track.
+At a different frame, sometimes it is easier to redraw the entire segmentation label than adjusting each existing vertex. Press ``Ctrl-delete`` (``Cmd-delete`` for Mac users) to re-draw a segmentation label in the selected object track.
 
 .. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/seg2d_tracking_redraw.gif
     :width: 600px
