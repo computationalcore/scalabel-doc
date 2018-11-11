@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Labeling tool</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/tether.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-104140760-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Instructions</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix"
+                data-offset-top="125">
+                <li class="active"><a href="#examples">Missions and Examples</a>
+                </li>
+                <li><a href="#section-1">Draw Box</a></li>
+                <li><a href="#section-2">Edit Box</a></li>
+                <li><a href="#section-3">Submit Assignment</a></li>
+                <li><a href="#section-4">What's More</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-9">
+            <h2 id="examples">Bounding Box Annotation Technical Standard</h2>
+            <h3>Your Mission</h3>
+            <p>Your mission is to annotate bounding boxes around the following
+                10 objects as well their attributes (e.g. occluded, truncated,
+                color of the traffic light)
+                :</p>
+            <li>Human: person, rider</li>
+            <li>Vehicle: car, truck, bus, train, motor, bike</li>
+            <li>Object: traffic sign, traffic light</li>
+            <h3><b>Label Categories</b></h3>
+            <h4>Person</h4>
+            <p>A human that satisfies the following criterion. Assume the human
+                moved a distance of 1m and stopped again. If the human would
+                walk, the label is person, otherwise not. Examples are people
+                walking, standing or sitting on the ground, on a bench, on a
+                chair. This class also includes toddlers, someone pushing a
+                bicycle or standing next to it with both legs on the same side
+                of the bicycle. This class includes anything that is carried by
+                the person, e.g. backpack, but not items touching the ground,
+                e.g. trolleys.</p>
+            <img src="image/bbox/person.png" height="50%" width="50%">
+            <h4>Rider</h4>
+            <p>A human that would use some device to move a distance of 1m.
+                Includes, riders/drivers of bicycle, motorbike, scooter,
+                skateboards, horses, roller-blades, wheel-chairs, road cleaning
+                cars, cars without roof. Note that a visible driver of a car
+                with roof can only be seen through the window. Since holes are
+                not labeled, the human is included in the car label.</p>
+            <img src="image/bbox/rider.png" height="50%" width="50%">
+            <h4>Car</h4>
+            <p>Car, jeep, SUV, small van with continuous body shape, caravan,
+                no other trailers</p>
+            <img src="image/bbox/car.png" height="50%" width="50%">
+            <h4>Truck</h4>
+            <p>Truck, box truck, pickup truck. Including their trailers. Back
+                part / loading area is physically separated from driving
+                compartment</p>
+            <img src="image/bbox/truck.png" height="10%" width="10%">
+            <h4>Bus</h4>
+            <p>Bus for 9+ persons, public transport or long distance
+                transport.</p>
+            <img src="image/bbox/bus.png" height="10%" width="10%">
+            <h4>Train</h4>
+            <img src="image/bbox/train.png" height="10%" width="10%">
+            <h4>Motor</h4>
+            <p> Motorbike, moped, scooter without the driver (that's a rider,
+                see above)</p>
+            <img src="image/bbox/motor.png" height="10%" width="10%">
+            <h4>Bike</h4>
+            <p>Bicycle without the driver (that's a rider, see above)</p>
+            <img src="image/bbox/bike.png" height="10%" width="10%">
+            <h4>Traffic Sign</h4>
+            <p>Sign installed from the state/city authority, usually for
+                information of the driver/cyclist/pedestrian in an everyday
+                traffic scene, e.g. traffic- signs, direction signs - without
+                their poles. No ads/commercial signs. The front side and back
+                side of a sign containing the information. Note that commercial
+                signs attached to buildings become building, attached to poles
+                or standing on their own become billboard</p>
+            <img src="image/bbox/traffic_sign.png" height="30%" width="20%">
+            <img src="image/bbox/sign.png" height="20%" width="20%">
+            <h4>Traffic Light</h4>
+            <p>The traffic light box without its poles.</p>
+            <img src="image/bbox/traffic_light.png" height="40%" width="50%">
+            <img src="image/bbox/light.png" height="40%" width="50%">
+
+            <h3><b>Occluded</b></h3>
+            <p>An object annotated as "occluded" when one object is
+                hidden by another object. e.g. two persons walking
+                past each other, or a car that drives under a bridge or parks
+                behind another car.</p>
+            <p> Good example: annotate all visible parts of the object. </p>
+            <img src="image/bbox/good_occluded_example.png" height="40%"
+                 width="50%">
+            <p> Bad example: missed some visible parts of the object. </p>
+            <img src="image/bbox/bad_occluded_example.png" height="40%"
+                 width="50%">
+
+            <h3><b>Truncated</b></h3>
+            <p>An object annotated as `truncated' indicates that the bounding
+                box
+                specified for the object does not correspond to the full extent
+                of the object e.g. an image of a person from the waist up, or a
+                view of a car extending outside the image.</p>
+            <img src="image/bbox/occluded_truncated_example.png" height="40%"
+                 width="50%">
+
+            <h3><b>Traffic Light Color</b></h3>
+            <p> Traffic light object needs to be further annotated with one
+                of the following colors: Green, Yellow, Red. Light color of
+                other objects are annotated as NA(Not applicable). </p>
+            <br>
+            <hr>
+            <h2 id="section-1">Draw Box</h2>
+            <p>First select the object category from the drop-down menu and
+                then perform <b>"click and drag"</b> to draw a bounding box
+                around the object. After selecting one category, you can keep
+                annotating new objects of the selected category.</p>
+            <b>Video recording (mouse clicks shown)</b>
+            <div class="modal-content">
+                <video src="video/create_bbox.mov" height="100%"
+                       width="100%" controls preload="metadata"></video>
+            </div>
+            <hr>
+            <h2 id="section-2">Edit Box</h2>
+            <p> First Select the box by clicking its border or its label tag.
+                Selected box will be highlighted when you can resize, remove
+                and change the label of the box. You can unselect the box by
+                clicking anywhere in the background.
+            </p>
+            <b>
+                <li> Adjust Box</li>
+            </b>
+            <p> Select and drag one of its eight control points.
+                Please annotate the bounding box around
+                the object as tight as possible and only annotate visible
+                part of the object. You can hover on
+                one of its eight control points and adjust its shape. </p>
+            <b>
+                <li> Remove Box</li>
+            </b>
+            <p> Select and hit the Remove button in the toolbox or pressing
+                delete/backspace on keyboard. </p>
+
+            <b>
+                <li> Change Label Category</li>
+            </b>
+            <p> Select and replace its label with a new category option in the
+                drop down menu. If you choose a new option in the drop down
+                while no bounding box is selected, new bounding boxes will be
+                annotated as the new category.
+            </p>
+            <b>Video recording (mouse clicks shown)</b>
+            <div class="modal-content">
+                <video src="video/edit_bbox.mov" height="100%"
+                       width="100%" controls preload="metadata"></video>
+            </div>
+            <hr>
+            <h2 id="section-3">Submit Assignment</h2>
+            <p> When you reach the last image, you can submit
+                the assignment by hitting the submit button.
+                Click ">>" or "<<" to go to the next / previous image.
+                Numbers below indicate your progress. Start annotating from
+                the first image, and finish the whole assignment before
+                submission.</p>
+            <b>Video recording (mouse clicks shown)</b>
+            <div class="modal-content">
+                <video src="video/submit.mov" height="100%"
+                       width="100%" controls preload="metadata"></video>
+            </div>
+            <h2 id="section-4">What's More</h2>
+            <p style="color:red">1. Objects that are smaller than 7 * 7 pixel
+                can be ignored. The bounding box smaller than 7 * 7
+                will turn grey and disappear when you finish. </p>
+            <p>2. Zoom in with your browser to draw the bounding boxes more
+                accurately.</p>
+            <p>3. Hit "h"(keyboard) to hide category label tags on the bounding
+                boxes, and to show them after hitting "h"(keyboard) again. </p>
+            <p>4. The remove operation is irreversible.</p>
+            <p>5. If you refresh the page before submission, all previous
+                history will not be saved.
+            </p>
+
+            <h3>Report bugs and send questions to
+                <a>bdd-label-help@googlegroups.com</a>.
+            </h3>
+            <hr>
+        </div>
+    </div>
+</div>
+</body>

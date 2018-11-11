@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Labeling tool</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/tether.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-104140760-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Instructions</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix"
+                data-offset-top="125">
+                <li class="active"><a href="#examples">Annotation Standard</a>
+                </li>
+                <li><a href="#section-1">Basic Options</a></li>
+                <li><a href="#section-2">Draw</a></li>
+                <li><a href="#section-3">Resize and Add New Vertex</a>
+                </li>
+                <li><a href="#section-4">Add Curve</a></li>
+                <li><a href="#section-5">Select and Delete</a></li>
+                <li><a href="#section-6">What's More</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-9">
+            <h2 id="examples">Annotation Standard</h2>
+            <p>There are 6 types of lane dividing marks: single yellow,
+            double yellow, single white, double white, road curb and crosswalk.
+                And they have two attributes: 1. full or dashed; 2. parallel
+                or vertical.</p>
+            <br>
+            <img src="image/lane/example1.png" height="200px"
+                 width="300px"></img><img src="image/lane/example2.png" height="200px"
+                                          width="300px"></img>
+            <br>
+            <br>
+            <p>As for the second attribute, to define the direction of the
+                lane (parallel or vertical), we introduce two directions:
+                the direction of its tangent line and the direction of the
+                cars driving onto it. If the two directions are the same,
+                then the attribute is "parallel". Or it is "vertical".</p>
+            <br>
+            <p></p>
+            <img src="image/lane/direct.png" height="200px"
+                 width="300px"></img>
+            <br>
+            <p>Paralleled lanes:</p>
+            <img src="image/lane/parallel1.png" height="200px"
+                 width="300px"></img><img src="image/lane/parallel2.png"
+                                          height="200px"
+                                          width="300px"></img>
+            <br>
+            <p>Vertical lanes:</p>
+            <img src="image/lane/vertical1.png" height="200px"
+                 width="300px"></img><img src="image/lane/vertical2.png"
+                                          height="200px"
+                                          width="300px"></img>
+            <br>
+            <br>
+            <p>So you should choose the categories and attributes of these
+            different lane marks. And what's more, if its width is not
+                negligible, we should annotate both
+                sides. In most cases, the lane marks are wide enough to be
+                annotate for two sides. For example:</p>
+            <br>
+            <img src="image/lane/annotate1.png" height="200px"
+                 width="300px"></img><img src="image/lane/annotate2.png" height="200px"
+                                          width="300px"></img>
+            <br>
+            <br>
+            <p>As for those dashed lines, don't forget to set their
+                attributes to "dashed", and you can annotate the dotted parts
+                as a whole.</p>
+            <br>
+            <img src="image/lane/dashed1.png" height="200px"
+                 width="300px"></img><img src="image/lane/dashed2.png" height="200px"
+                                          width="300px"></img>
+            <br>
+            <br>
+            <p>As for crosswalks, you should annotate the dashed sides, and
+                set the attributes to "dashed" and "vertical".</p>
+            <br>
+            <img src="image/lane/crosswalk.png" height="200px"
+                 width="300px"></img>
+            <br>
+            <br>
+            <h2 id="section-1">Basic Options</h2>
+            <p>The mode transition can be described in this image:</p>
+            <br>
+            <img src="image/lane/state.png" height="50%" width="50%"></img>
+            <br>
+            <p>1. Click next button ">>" to work on
+                the next image and click "<<" to go back to the
+                previous one. You can not
+                submit your task before you finish the last image.</p>
+            <br>
+            <p>2. When you finish your task, click the
+                button "Submit" on top right and your submission will be
+                stored.</p>
+            <br>
+            <p>3. Click "Hide Label" button (or press "L(l)") in the control box
+                to hide
+                categories of lines. Click/press it again to show.</p>
+            <br>
+            <p>4. Select an annotated line by <b><u>Double Click</u></b>,
+                and <b><u>Double Click</u></b> the background image to cancel
+                selection.
+                You can change the selection by double click other line.
+                Once a line is selected, you can change its category,
+                resize or delete.
+                <b><u>DO NOT USE SINGLE CLICK TO SELECT</u></b>, or you will
+                draw a new line.</p>
+            <br>
+            <p>5. Move your mouse onto a vertex, <b><u>when it turns bigger and
+                green</u></b>, then press "ESC" or "DELETE" to delete a vertex.
+                Otherwise, the deletion is invalid. You can also press "ESC" to
+                remove the whole object that you are drawing, and use
+                "DELETE" to remove a latest vertex.</p>
+            <br>
+            <p>6. Move your mouse onto a midpoint of one straight edge,
+                <b><u>when
+                    it turns bigger and orange</u></b>, press "B(b)" to change this
+                edge to a Bezier Curve. You can drag the control points to
+                adjust its shape.</p>
+            <br>
+            <p>7. If points are too dense and annoying, press "H(h)" to hide
+                midpoints when hovering on a line.</p>
+            <br>
+            <p>8. Click "+/-" or press PageUp/PageDown to zoom.</p>
+            <hr>
+
+            <h2 id="section-2">Draw</h2>
+            <p>1. You can draw a polyline using many single
+                clicks. The positions of your clicks
+                form the vertices. </p>
+            <br>
+            <p>2. When you want to finish drawing, move your mouse to the first
+                vertex (where you started). You will notice the it becomes green
+                and bigger, then make a click right there and your drawing
+                will be finished.</p>
+            <hr>
+            <h2 id="section-3">Resize and Add New Vertex</h2>
+            <br>
+            <h3>Resize</h3>
+            <p>1. You can drag vertices to resize a line's shape. When you
+                move your mouse onto a
+                vertex, it will turn green and bigger. If your mouse leaves, it
+                will recover. <b>So try not to move
+                    your mouse after seeing this phenomenon.</b></p>
+            <br>
+            <p>2. Make a click on "the big green vertex" but keep your
+                mouse down; and then drag the vertex to where you
+                want.</p>
+            <br>
+
+            <h3>Add Vertex</h3>
+            <br>
+            <p>1. When you hover onto a line, some other points (not only the
+                vertices) are shown. They are midpoints. We will use
+                midpoints to support some operations related to edges.</p>
+            <br>
+            <p>2. When you hover onto a midpoint, it
+                will be orange and bigger. </p>
+            <br>
+            <p>3. Make a click right on the "big orange midpoint", and
+                drag the midpoint somewhere you want. It will
+                become a new vertex, and create another 2 new
+                midpoints. In this way you can add a vertex between
+                any two vertices.</p>
+            <br>
+            <h2 id="section-4">Change a Straight Edge to Bezier
+                Curve</h2>
+            <br>
+            <p> 1. Hover onto the <b>midpoint</b> of the edge
+                you want to change. Then press <b>"B"</b> or <b>"b"</b>,
+                a cubic Bezier curve will be created.
+                If you want to figure out what is Bezier curve, you can
+                view this:</p>
+            <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">What
+                is Besize Curve</a>
+            <br>
+            <p>2. But it's ok if you don't know anything about it.
+                Your pressing will create a Bezier curve with 4 Bezier
+                control points, they are in yellow:
+                two endpoints of the edge and two new
+                points between them.</p>
+            <br>
+            <p>3. You can hover on and drag these "Bezier control points"
+                to change the shape of
+                the curve. So that you can use it to annotate
+                curves, such as curved lane.</p>
+            <br>
+            <p>4. Hover onto a "Bezier control point" and
+                press "ESC" or "DELETE", you can change the curve back to
+                straight
+                edge.</p>
+            <br>
+            <p><b>This is a video on adding curves:</b></p>
+            <br>
+            <div class="modal-content">
+                <video src="video/bezier.mov" height="100%" width="100%"
+                       controls preload="metadata"></video>
+            </div>
+            <hr>
+            <h2 id="section-5">Select and Delete</h2>
+            <br>
+            <h3>Select</h3>
+            <br>
+            <p>1. When you want to change the category of an annotated
+                line, double click it. The color will change, which indicates a
+                successful selection.</p>
+            <br>
+            <p>2. If you want to change the category, you can choose one in the
+                toolbox. If you want to resize it, then "hover and drag" as
+                described before. In selection mode, you can drag a vertex even
+                it is occluded.</p>
+            <br>
+            <p>3. Double click the background image to cancel your
+                selection.</p>
+            <br>
+            <h3>Delete</h3>
+            <br>
+            <p>1. If you want to delete your selection, press "DELETE" or click
+                "delete" button.</p>
+            <br>
+            <p>2. When you want to delete what you are drawing (not finished, no
+                close path
+                formed), just simply press "ESC". As for deleting a
+                vertex, hover on it, press "ESC" or "DELETE" after it turns
+                bigger and green.</p>
+            <hr>
+            <h2 id="section-6">What's more:</h2>
+            <p>1. Remember, the delete operation is irreversible.</p>
+            <p>2. You can not delete a midpoint (that's a ridiculous
+                opration).</p>
+            <p>3. If you press "ESC" when your mouse is on a Bezier control
+                point, the curve will recover to a straight edge.</p>
+            <p>4. The operations related with point are valid if and only if its<b>
+                shape changes.</b></p>
+            <hr>
+        </div>
+    </div>
+</div>
+</body>

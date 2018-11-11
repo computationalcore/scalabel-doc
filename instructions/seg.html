@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Labeling tool</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/tether.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-104140760-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Instructions</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix"
+                data-offset-top="125">
+                <li class="active"><a href="#examples">Annotation Standard</a>
+                </li>
+                <li><a href="#section-1">Basic Options</a></li>
+                <li><a href="#section-2">Draw Polygon</a></li>
+                <li><a href="#section-3">Resize and Add New Vertex</a>
+                </li>
+                <li><a href="#section-4">Add Curve</a></li>
+                <li><a href="#section-5">Select and Delete</a></li>
+                <li><a href="#section-6">Link</a></li>
+                <li><a href="#section-7">Share Border</a></li>
+                <li><a href="#section-8">What's More</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-9">
+            <h2 id="examples">Annotation Standard</h2>
+            <h3>1. Labeling Policy</h3>
+            <p>Labeled foreground objects must never have holes, i.e. if there
+                is some background visible 'through' some foreground object, it
+                is considered to be part of the foreground. This also applies to
+                regions that are highly mixed with two or more classes: they are
+                labeled with the foreground class. Examples: tree leaves in
+                front of house or sky (everything tree), transparent car windows
+                (everything car).
+            </p>
+            <h3>2. Total Class 40</h3>
+            <p>With reference to: <a
+                    href="https://www.cityscapes-dataset.com/dataset-overview/#labeling-policy">cityscape</a>,
+                there are some newly added classes.</p>
+            <br>
+            <table border="2" cellpadding="10">
+                <tr>
+                    <th>Category</th>
+                    <th>Class</th>
+                </tr>
+                <tr>
+                    <th>Flat</th>
+                    <td>road, sidewalk, parking, rail track</td>
+                </tr>
+                <tr>
+                    <th>Human</th>
+                    <td>person, rider</td>
+                </tr>
+                <tr>
+                    <th>Vehicle</th>
+                    <td>car, truck, bus, on rails, motorcycle, bicycle,
+                        caravan, trailer
+                    </td>
+                </tr>
+                <tr>
+                    <th>Construction</th>
+                    <td>building, bus stop, wall, fence, guard rail, bridge, tunnel,
+                        garage
+                    </td>
+                </tr>
+                <tr>
+                    <th>Object</th>
+                    <td>banner, billboard, fire hydrant, lane divider, mail box, parking sign, pole, polegroup, street light, traffic cone, traffic device, traffic light, traffic sign, traffic sign frame, trash can
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nature</th>
+                    <td>vegetation, terrain</td>
+                </tr>
+                <tr>
+                    <th>Sky</th>
+                    <td>sky</td>
+                </tr>
+                <tr>
+                    <th>Void</th>
+                    <td>dynamic, static, ground, ego
+                        vehicle
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <h3>2.1 Road</h3>
+            <p>Road：Part of ground on which cars usually drive, i.e. all lanes,
+                all directions, all streets. Including the markings on the road.
+                Areas only delimited by markings from the main road (no texture
+                change) are also road, e.g. bicycle lanes, roundabout lanes, or
+                parking spaces. This label does not include curbs.</p>
+            <br>
+
+            <h3>2.2 Sidewalk</h3>
+            <p>Sidewalk: Part of ground designated for pedestrians or cyclists.
+                Delimited from the road by some obstacle, e.g. curbs or poles
+                (might be small), not only by markings. Often elevated compared
+                to the road. Often located at the sides of a road. This label
+                includes a possibly delimiting curb, traffic islands (the
+                walkable part), or pedestrian zones (where usually cars are not
+                allowed to drive during day-time).<br>
+                As shown in the second picture below,
+                sidewalk in the middle of the road is still sidewalk.</p>
+            <br>
+
+            <img src="image/seg/sidewalk.png" height="50%"
+                 width="50%"></img><img src="image/seg/sidewalk2.png" height="50%"
+                 width="50%"></img>
+
+
+            <br>
+            <h3>2.3 Parking</h3>
+            <p>Parking lots and driveways. Not for regular driving, but rather
+                to park a vehicle. Different texture than road. In ambiguous
+                cases where the driveway is not separated from the sidewalk
+                (e.g. a building entrance), labeled as sidewalk.</p>
+            <br>
+
+            <img src="image/seg/parking1.png" height="200px"
+                 width="300px"></img><img src="image/seg/parking2.png"
+                                          height="200px"
+                                          width="300px"></img>
+
+            <p>The second image should be considered sidewalk.</p>
+            <h3>2.4 Rail Track</h3>
+            <p>All kind of rail tracks that are non-drivable by cars, e.g.
+                subway and train rail tracks, while tram rail tracks are usually
+                drivable by cars and therefore part of road.</p>
+            <br>
+
+            <img src="image/seg/track1.png" height="200px"
+                 width="300px"></img><img src="image/seg/track2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.5 Person</h3>
+            <p>A human that satisfies the following criterion. Assume the human
+                moved a distance of 1m and stopped again. If the human would
+                walk, the label is person, otherwise not. Examples are people
+                walking, standing or sitting on the ground, on a bench, on a
+                chair. This class also includes toddlers, someone pushing a
+                bicycle or standing next to it with both legs on the same side
+                of the bicycle. This class includes anything that is carried by
+                the person, e.g. backpack, but not items touching the ground,
+                e.g. trolleys.</p>
+            <br>
+
+            <img src="image/seg/person1.png" height="200px"
+                 width="300px"></img><img src="image/seg/person2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.6 Rider</h3>
+            <p>A human that would use some device to move a distance of 1m.
+                Includes, riders/drivers of bicycle, motorbike, scooter,
+                skateboards, horses, roller-blades, wheel-chairs, road cleaning
+                cars, cars without roof. Note that a visible driver of a car
+                with roof can only be seen through the window. Since holes are
+                not labeled, the human is included in the car label.</p>
+            <h3>2.8 Truck</h3>
+            <p>Truck, box truck, pickup truck. Including their trailers. Back
+                part / loading area is physically separated from driving
+                compartment.</p>
+            <h3>2.9 Bus</h3>
+            <p>Bus for 9+ persons, public transport or long distance
+                transport.</p>
+            <h3>2.10 On Rails</h3>
+            <p>Vehicle on rails, e.g. tram, train.</p>
+
+            <img src="image/seg/onrail1.png" height="200px"
+                 width="300px"></img><img src="image/seg/onrail2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.11 Motorcycle</h3>
+            <p>Motorbike, moped, scooter without the driver (that's a rider,
+                see above).</p>
+
+            <img src="image/seg/motor1.png" height="200px"
+                 width="300px"></img><img src="image/seg/motor2.png" height="200px"
+                                          width="300px"></img>
+            <img src="image/seg/motor3.png" height="200px"
+                 width="300px"></img><img src="image/seg/motor4.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.12 Bicycle</h3>
+            <p>Bicycle without the driver (that's a rider, see above).</p>
+
+            <img src="image/seg/bicycle.png" height="50%"
+                 width="50%"></img>
+
+            <h3>2.13 Caravan</h3>
+            <p>Like truck, but back is primarily for living/sleeping.
+                Including caravan trailers.</p>
+
+            <img src="image/seg/caravan.png" height="50%"
+                 width="50%"></img>
+
+            <h3>2.14 Trailers</h3>
+            <p>Trailers typically pulled by cars. Note that truck trailers
+                are labeled truck, caravan trailers caravan, bicycle or horse
+                trailers dynamic.</p>
+            <br>
+
+            <img src="image/seg/trailer1.png" height="200px"
+                 width="300px"></img><img src="image/seg/trailer2.png"
+                                          height="200px"
+                                          width="300px"></img>
+
+            <p>In the first image: the trailer is towed by car, so it's
+                trailer. The second one should be labeled as truck.</p>
+            <br>
+
+            <img src="image/seg/trailer3.png" height="200px"
+                 width="300px"></img><img src="image/seg/trailer4.png"
+                                          height="200px"
+                                          width="300px"></img>
+
+            <p>caravan</p>
+            <br>
+
+            <img src="image/seg/trailer5.png" height="200px"
+                 width="300px"></img><img src="image/seg/trailer6.png"
+                                          height="200px"
+                                          width="300px"></img>
+
+            <p>Horse trailer and bicycle trailer: dynamic.</p>
+            <br>
+            <h3>2.15 Building</h3>
+            <p>Building, skyscraper, house, bus stop building, garage, car port.
+                If a building has a glass wall that you can see through, the
+                wall is still building. Includes scaffolding attached to
+                buildings.</p>
+            <h3>2.16 Wall</h3>
+            <p>Individual standing wall. Not part of a building.</p>
+            <h3>2.17 Fence</h3>
+            <p>Fence including any holes.</p>
+            <h3>2.18 Guard Rail</h3>
+            <p>All types of guard rails/crash barriers.</p>
+            <h3>2.19 Bridge</h3>
+            <p>Only the bridge. Fences, people or vehicles on top are labeled
+                separately.</p>
+            <h3>2.20 Tunnel</h3>
+            <p>Tunnel wall and 'the dark'. No vehicles.</p>
+            <h3>2.21 Garage</h3>
+
+            <img src="image/seg/garage1.png" height="200px"
+                 width="300px"></img><img src="image/seg/garage2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.22 Pole</h3>
+            <p>Small mainly vertically oriented pole. E.g. sign pole, traffic
+                light poles. If the pole has a horizontal part (often for
+                traffic light poles) this part is also considered pole. If there
+                are things mounted at the pole that are neither traffic light
+                nor traffic sign (e.g. street lights) and that have a diameter
+                (in pixels) of at most twice the diameter of the pole, then
+                these things might also be labeled pole. If they are larger,
+                they are labeled static.</p>
+            <h3>2.23 Pole Group</h3>
+            <p>Multiple poles that are cumbersome to label individually. This
+                label is ok to use, if the gap between two poles has at most as
+                many pixels width as a single pole.</p>
+            <h3>2.24 Traffic Sign</h3>
+            <p>Sign installed from the state/city authority, usually for
+                information of the driver/cyclist/pedestrian in an everyday
+                traffic scene, e.g. traffic- signs, direction signs - without
+                their poles. No ads/commercial signs. The front side and back
+                side of a sign containing the information. Note that commercial
+                signs attached to buildings become building, attached to poles
+                or standing on their own become billboard.</p>
+
+            <img src="image/seg/sign1.png" height="200px"
+                 width="300px"></img><img src="image/seg/sign2.png" height="200px"
+                                          width="300px"></img>
+            <img src="image/seg/sign3.png" height="200px"
+                 width="300px"></img><img src="image/seg/sign4.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.25 Traffic Light</h3>
+            <p>The traffic light box without its poles.</p>
+            <h3>2.26 Banner</h3>
+
+            <img src="image/seg/banner1.png" height="200px"
+                 width="300px"></img><img src="image/seg/banner2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.27 Billboard</h3>
+
+            <img src="image/seg/billboard1.png" height="200px"
+                 width="300px"></img><img src="image/seg/billboard2.png"
+                                          height="200px"
+                                          width="300px"></img>
+            <img src="image/seg/billboard3.png" height="200px"
+                 width="300px"></img>
+
+            <h3>2.28 Street Light</h3>
+            <p>As labeled in the second picture, only the light parts should be labeled as street light,
+            the rest of the pole part should be labeled as pole.</p>
+
+            <img src="image/seg/streetlight.png" height="300px"
+                 width="200px"></img><img src="image/seg/streetlight2.png" height="300px"
+                 width="400px"></img>
+
+            <h3>2.29 Traffic Device</h3>
+            <p>speed camera and other non-signal devices.</p>
+
+            <img src="image/seg/device1.png" height="200px"
+                 width="300px"></img><img src="image/seg/device2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.30 Lane Divider</h3>
+
+            <img src="image/seg/divider1.png" height="200px"
+                 width="300px"></img><img src="image/seg/divider2.png"
+                                          height="200px"
+                                          width="300px"></img>
+            <img src="image/seg/divider3.png" height="200px"
+                 width="300px"></img>
+
+            <h3>2.31 Traffic Sign Frame</h3>
+
+            <img src="image/seg/frame1.png" height="200px"
+                 width="300px"></img><img src="image/seg/frame2.png" height="200px"
+                                          width="300px"></img>
+
+            <h3>2.32 Parking Sign</h3>
+
+            <img src="image/seg/parkingsign1.png" height="200px"
+                 width="200px"></img><img src="image/seg/parkingsign2.png"
+                                          height="200px"
+                                          width="200px"></img>
+            <img src="image/seg/parkingsign3.png" height="200px"
+                 width="200px"></img><img src="image/seg/parkingsign4.png"
+                                          height="200px"
+                                          width="200px"></img>
+
+            <h3>2.33 Traffic Cone</h3>
+
+            <img src="image/seg/cone.png" height="200px"
+                 width="300px"></img>
+
+            <h3>2.34 Vegetation</h3>
+            <p>Tree, hedge, all kinds of vertical vegetation. Plants attached to
+                buildings are usually not annotated separately and labeled
+                building as well. If growing at the side of a wall or building,
+                marked as vegetation if it covers a substantial part of the
+                surface (more than 20%).</p>
+            <h3>2.35 Terrain</h3>
+            <p>Grass, all kinds of horizontal vegetation, soil or sand. These
+                areas are not meant to be driven on. This label includes a
+                possibly delimiting curb. Single grass stalks do not need to be
+                annotated and get the label of the region they are growing
+                on.</p>
+            <img src="image/seg/terrain2.png" height="200px"
+                 width="300px"></img><img src="image/seg/terrain3.png"
+                                          height="200px"
+                                          width="300px"></img>
+            <h3>2.36 Sky</h3>
+            <p>Open sky, without leaves of tree. Includes thin electrical
+                wires in front of the sky.</p>
+            <h3>2.37 Ground</h3>
+            <p>All other forms of horizontal ground-level structures that do not
+                match any of the above. For example areas that cars and
+                pedestrians share all-day, roundabouts that are flat but
+                delimited from the road by a curb, elevated parts of traffic
+                islands, water. Void label for flat areas.</p>
+            <h3>2.38 Dynamic</h3>
+            <p>Things that might not be there anymore the next day/hour/minute:
+                Movable trash bin, buggy, bag, wheelchair, animal.</p>
+            <h3>2.39 Static</h3>
+            <p>Clutter in the background that is not distinguishable. Objects
+                that do not match any of the above. For example, visible parts
+                of the ego vehicle, mountains, street lights. Also rather small
+                regions in the image that are some of the classes above, but
+                that are cumbersome to label precisely might be annotated
+                static.</p>
+            <h3>2.40 Bus Stop</h3>
+            <p>A bus stop is a designated place where buses stop for passengers
+             to board or alight from a bus.</p>
+            <img src="image/seg/busstop.png" height="200px"
+                 width="300px">
+            <h3>2.41 Mail Box</h3>
+            <p>A physical box into which members of the public can deposit outgoing mail
+             intended for collection by the agents of a country's postal service. The term
+              can also refer to a private letter box for incoming mail.</p>
+            <img src="image/seg/mailbox.png" height="200px"
+                 width="300px">
+            <h3>2.42 Fire Hydrant</h3>
+            <p>A connection point by which firefighters can tap into a water supply.</p>
+            <img src="image/seg/firehydrant.png" height="200px"
+                 width="200px">
+            <hr>
+            <h3>Explanation</h3>
+            <p>3.1 Single instance annotations are available. However, if the
+                boundary between such instances cannot be clearly seen, the
+                whole crowd/group is labeled together and annotated as group,
+                e.g. car group.</p>
+            <p>3.2 This label is not included in any evaluation and treated as
+                void (or in the case of license plate as the vehicle mounted
+                on).</p>
+            <p>3.3 Objects that are smaller than 50X50 pixel can be ignored.</p>
+            <h2 id="section-1">Basic Options</h2>
+            <p>The mode transition can be described in this image:</p>
+            <br>
+            <img src="image/seg/state.png" height="50%" width="50%"></img>
+            <br>
+            <p>And there are some examples, the top images are good, while
+                the bottom are bad.</p>
+            <img src="image/seg/good1.png" height="70%"
+                 width="70%"></img>
+            <img src="image/seg/good2.png" height="70%"
+                 width="70%"></img>
+            <hr>
+            <img src="image/seg/bad1.png" height="70%"
+                 width="70%"></img>
+            <img src="image/seg/bad2.png" height="70%"
+                 width="70%"></img>
+            <hr>
+
+            <p>1. Click next button ">>" to work on
+                the next image and click "<<" to go back to the
+                previous one. You can not
+                submit your task before you finish the last image.</p>
+            <br>
+            <p>2. When you finish your task, click the
+                button "Submit" on top right and your submission will be
+                stored.</p>
+            <br>
+            <p>3. Click "Hide Label" button (or press "L(l)") in the control box
+                to hide
+                categories of regions. Click/press it again to show.</p>
+            <br>
+            <p>4. Select an annotated region by <b><u>Double Click</u></b>,
+                and <b><u>Double Click</u></b> the background image to cancel
+                selection.
+                You can change the selection by double click other region.
+                Once a region is selected, you can change its category,
+                resize or delete.
+                <b><u>DO NOT USE SINGLE CLICK TO SELECT</u></b>, or you will
+                draw a new region.</p>
+            <br>
+            <p>5. Move your mouse onto a vertex, <b><u>when it turns bigger and
+                green</u></b>, then press "ESC" or "DELETE" to delete a vertex.
+                Otherwise, the deletion is invalid. You can also press "ESC" to
+                remove the whole object that you are drawing, and use
+                "DELETE" to remove a latest vertex.</p>
+            <br>
+            <p>6. Clicking "Magnify" Button (or press "M(m)"), you can annotate
+                small regions with the help of a magnifier. Click (press) again
+                to remove it.</p>
+            <br>
+            <p>7. Move your mouse onto a midpoint of one straight edge, <b><u>when
+                it turns bigger and orange</u></b>, press "B(b)" to change this
+                edge to a Bezier Curve. You can drag the control points to
+                adjust its shape.</p>
+            <br>
+            <p>8. If points are too dense and annoying, press "H(h)" to hide
+                midpoints when hovering on a region.</p>
+            <br>
+            <p>9. Click "+/-" or press PageUp/PageDown to zoom.</p>
+            <br>
+            <p>10. If an object is separated by others, use "Link" button to
+                link these regions, so that they can have the same instance.</p>
+            <br>
+            <p>11. If you want to obtain part of the border of an
+                existed object, press "S/s" when drawing or before drawing, and
+                then click
+                two endpoints on the border. After that, you can continue
+                drawing and clicking. Thus the object
+                can share border with what you are drawing. It's less time
+                consuming.</p>
+            <hr>
+
+            <h2 id="section-2">Draw Polygon</h2>
+            <p>1. You can draw a polygon using many single
+                clicks. The positions of your clicks
+                form the vertices. </p>
+            <br>
+            <p>2. When you want to finish drawing, move your mouse to the first
+                vertex (where you started). You will notice the it becomes green
+                and bigger, then make a click right there and a close path will
+                be formed.</p>
+            <hr>
+            <h2 id="section-3">Resize and Add New Vertex</h2>
+            <br>
+            <h3>Resize</h3>
+            <p>1. You can drag vertices to resize a region's shape. When you
+                move your mouse onto a
+                vertex, it will turn green and bigger. If your mouse leaves, it
+                will recover. <b>So try not to move
+                    your mouse after seeing this phenomenon.</b></p>
+            <br>
+            <p>2. Make a click on "the big green vertex" but keep your
+                mouse down; and then drag the vertex to where you
+                want.</p>
+            <br>
+
+            <h3>Add Vertex</h3>
+            <br>
+            <p>1. When you hover onto a region, some other points (not only the
+                vertices) are shown. They are midpoints. We will use
+                midpoints to support some operations related to edges.</p>
+            <br>
+            <p>2. When you hover onto a midpoint, it
+                will be orange and bigger. </p>
+            <br>
+            <p>3. Make a click right on the "big orange midpoint", and
+                drag the midpoint somewhere you want. It will
+                become a new vertex, and create another 2 new
+                midpoints. In this way you can add a vertex between
+                any two vertices.</p>
+            <br>
+
+            <p><b>This is a video about how to draw, add and resize:</b></p>
+            <div class="modal-content">
+                <video src="video/draw_resize_add.mov" height="100%"
+                       width="100%" controls preload="metadata"></video>
+            </div>
+            <hr>
+
+            <h2 id="section-4">Change a Straight Edge to Bezier
+                Curve</h2>
+            <br>
+            <p> 1. Hover onto the <b>midpoint</b> of the edge
+                you want to change. Then press <b>"B"</b> or <b>"b"</b>,
+                a cubic Bezier curve will be created.
+                If you want to figure out what is Bezier curve, you can
+                view this:</p>
+            <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">What
+                is Besize Curve</a>
+            <br>
+            <p>2. But it's ok if you don't know anything about it.
+                Your pressing will create a Bezier curve with 4 Bezier
+                control points, they are in yellow:
+                two endpoints of the edge and two new
+                points between them.</p>
+            <br>
+            <p>3. You can hover on and drag these "Bezier control points"
+                to change the shape of
+                the curve. So that you can use it to annotate
+                curves, such as curved lane.</p>
+            <br>
+            <p>4. Hover onto a "Bezier control point" and
+                press "ESC" or "DELETE", you can change the curve back to
+                straight
+                edge.</p>
+            <br>
+            <p><b>This is a video on adding curves:</b></p>
+            <br>
+            <div class="modal-content">
+                <video src="video/curve.mov" height="100%" width="100%"
+                       controls preload="metadata"></video>
+            </div>
+            <hr>
+            <h2 id="section-5">Select and Delete</h2>
+            <br>
+            <h3>Select</h3>
+            <br>
+            <p>1. When you want to change the category of an annotated
+                area, double click it. The color will change, which indicates a
+                successful selection.</p>
+            <br>
+            <p>2. If you want to change the category, you can choose one in the
+                toolbox. If you want to resize it, then "hover and drag" as
+                described before. In selection mode, you can drag a vertex even
+                it is occluded.</p>
+            <br>
+            <p>3. Double click the background image to cancel your
+                selection.</p>
+            <br>
+            <h3>Delete</h3>
+            <br>
+            <p>1. If you want to delete your selection, press "DELETE" or click
+                "delete" button.</p>
+            <br>
+            <p>2. When you want to delete what you are drawing (not finished, no
+                close path
+                formed), just simply press "ESC". As for deleting a
+                vertex, hover on it, press "ESC" or "DELETE" after it turns
+                bigger and green.</p>
+            <br>
+            <p><b>This is a video about how to change label:</b>
+            </p>
+            <div class="modal-content">
+                <video src="video/label.mov" height="100%" width="100%"
+                       controls preload="metadata"></video>
+            </div>
+            <br>
+            <p><b>This is a video about how to delete:</b>
+            </p>
+            <div class="modal-content">
+                <video src="video/delete.mov" height="100%" width="100%"
+                       controls preload="metadata"></video>
+            </div>
+            <hr>
+
+            <h2 id="section-6">Link</h2>
+            <p>If several regions belong to the same object (the same
+                instance), you can use "link" button to link them together.</p>
+            <p> (a) You can select one of them (by double click), and click
+                "link" button, then single click the others, and click
+                "finish link". </p>
+            <p> (b) You can also click "link" first, then
+                single click every object to be linked, and then click
+                "finish link".</p>
+            <div class="modal-content">
+                <video src="video/link.mov" height="100%" width="100%"
+                       controls preload="metadata"></video>
+            </div>
+            <hr>
+
+            <h2 id="section-7">Share Border</h2>
+            <p>If an object shares border with others, you can follow the
+                following steps to copy the coincide part, so that you don't
+                need to draw it twice.</p>
+            <p>1. When you want to draw the coincide part of objects, press
+                "S/s" before drawing or during drawing;</p>
+            <p>2. Then you can notice the polygon is no longer filled, and
+                you can also see the vertices of other objects when moving
+                your mouse onto them. That means you have entered the "quick
+                draw" mode. Meanwhile, the toolbox will become blue. It will
+                remain blue or green unless you exit the "quick draw" mode. (By
+                press
+                "S/s" again).</p>
+            <p>3. Select two vertices on the border by clicking. <b>After
+                your first click, the toolbox will turn green, and the
+                object you selected will change color.</b> After your second
+                click, the toolbox will change from green to blue. You can
+                see a polyline is formed.
+            <p>4. You can use "PageLeft/PageRight" to choose the border,
+                because there are two cases: clockwise or counter-clockwise.</p>
+            <p>5. The toolbox will remain green before you click a pair of
+                points on the same object. And when you click on a new
+                object, it will remain green, since no coincide
+                border is formed, so that you can continue finding its pair.</p>
+            <p>6. Click the background image, the toolbox will be blue. So
+                in conclude, color green means you have finished the first
+                click and should look for the second point; color blue means
+                your should look for the first point.</p>
+            <p>7. The same as ordinary draw mode, press "delete" to delete
+                the latest vertex or last added border,
+                and press "esc" to delete the whole object. And when a closed
+                path is formed, your annotation is finished.
+            <p>8. <b>You can use it to click anywhere like the ordinary draw
+                mode, it only provides function to draw coincide part quickly by
+                clicking twice.</b></p>
+            <hr>
+            <p>Here is a video on how to draw:</p>
+            <div class="modal-content">
+                <video src="video/share.mov" height="100%" width="100%"
+                       controls preload="metadata"></video>
+            </div>
+            <hr>
+            <p>You must press "S/s" to enter/exit the "quick draw" mode
+                (unless the close path has been formed). In "quick draw"
+                mode, the poly will no longer be filled. And in ordinary draw
+                mode, the vertices of other region are invisible.
+            </p>
+            <p><b>Do not support bezier curve border!</b></p>
+            <hr>
+            <h2 id="section-8">What's more:</h2>
+            <p>1. Remember, the delete operation is irreversible.</p>
+            <p>2. You can not delete a midpoint (that's a ridiculous
+                opration).</p>
+            <p>3. If you press "ESC" when your mouse is on a Bezier control
+                point, the curve will recover to a straight edge.</p>
+            <p>4. The operations related with point are valid if and only if its<b>
+                shape changes.</b></p>
+            <p>5. If you want to drag some vertices occluded,
+                you can select the region and do that.</p>
+            <hr>
+        </div>
+    </div>
+</div>
+</body>
