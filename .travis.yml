@@ -7,6 +7,8 @@ before_install:
 install:
   - sudo pip install --upgrade pip
   - sudo pip install pycodestyle
+script: 
+  "echo \"TODO\""
 deploy:
   provider: s3
   access_key_id: access_key_id
