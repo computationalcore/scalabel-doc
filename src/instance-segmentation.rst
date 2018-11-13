@@ -1,58 +1,50 @@
 Instance Segmentation
 ---------------------
 
-The tool also supports "instance segmentation annotation". The interface
-is similar to the interface of 2D bounding boxes.
+Annotating instance segmentation involves drawing polygons. Simply click on the image to start a label,
+and close the path to finish drawing. Double-click on a label to select it.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/seg2d_0.2.png
+Dragging the midpoint on an edge turns the midpoint into a vertex. Click the midpoint of an edge while pressing
+``c`` makes the edge a bezier curve. You can adjust the control points to get tight-fitting curves. To revert back
+to a normal edge, click on a control point while pressing ``c``.
 
-   To draw a mask of the instance, you need to draw multiple anchor
-   points along the boundary of the instance and end at the initial
-   point to complete the drawing.
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/seg2d_draw.gif
 
-A short demo of drawing instance segmentation is shown below. Please
-check out the video with higher resolution
-`here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/inst_seg_caption.mp4>`__.
+   Drawing a segmentation label
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_seg_0.2.gif
+Sometimes an instance can be divided into multiple parts in the image due to occlusion. To link different polygons,
+select a segmentation label, and press ``Ctrl-L`` (``Cmd-L`` for Mac users) or the ``Link`` button to start linking.
+Click all labels that you want to link, and hit ``Enter`` to finish linking.
 
-To delete a polygon:
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/seg2d_link.gif
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_delete_0.2.gif
+   Linking segmentation labels
 
-You can also link two polygons together:
+Segmentation labels often share borders with each other. To make segmentation annotation more convenient, Scalabel supports
+vertex and edge sharing. When drawing a segmentation label, adding a new vertex at the position of an existing vertex shares
+the reference of the two vertices. The edge between two vertices that are both shared by two segmentation labels will also
+be shared. When adjusting a vertex or an edge with shared reference, all segmentation labels involved will be changed accordingly.
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_linking_0.2.gif
+Quick Draw is a useful tool for border sharing. When drawing a segmentation label that needs to share a border with an existing label,
+press ``Ctrl-D`` (``Cmd-D`` for Mac users) or the ``Quick Draw`` button to start Quick Draw mode. First select a polygon to share the
+border with, and then select the starting vertex and the ending vertex of the shared border. Press ``Alt`` to toggle between two
+possible shared paths. Hit ``Enter`` to end Quick Draw.
 
-Besides, you can enter the **quick draw** mode by clicking the
-``Quickdraw`` on the bottom left or pressing ``s`` which allows the two
-instances to share the common border. Check out the video demo with
-higher resolution
-`here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/quickdraw_demo.mp4>`__.
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/seg2d_quickdraw.gif
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/quickdraw_demo_h.gif
+    Quick Draw
 
-Our tool also allows you to **bezier the curve** to improve the
-annotation quality. Checkout the video demo
-`here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/bezier_demo.mp4>`__.
-
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/2d_bezier_0.2.gif
+To delete a single vertex, click on the vertex while pressing ``d``. When drawing a segmentation label in progress, pressing ``d``
+deletes the last vertex drawn on the image.
 
 Lane Marking
 ~~~~~~~~~~~~
 
-Lane marking is used in a similar way as the other image annotations,
-but you will need to select a different label type when you are creating
-your project. The operations are the same as those for instance
-segmentation. In this case, you won’t see a whole chuck of color filled
-in your selected area, since lane labeling is just outlining different
-sections of a street.
+Lane marking is similar to segmentation labeling, except that the path is not closed. Hit ``Enter`` to finish drawing a label.
 
-Here is a short demo of lane marking below. Checkout the video with
-higher resolution
-`here <https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_caption.mp4>`__.
+.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane.gif
 
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/videos/lane_marking_0.2.gif
+    Lane marking
 
 Drivable Area
 ~~~~~~~~~~~~~
