@@ -8,10 +8,9 @@ pip install sphinx sphinx_rtd_theme
 Build the documentation
 
 ```
-make html
+./build.sh
 ```
 
-Sync to S3 (The scalabel team will do this periodically)
-```
-aws s3 sync _build/html s3://www.scalabel.ai/doc --acl public-read
-```
+The full doc files will be in `_doc`.
+
+The master will be synced with [scalabel.ai/doc](https://www.scalabel.ai/doc) when a PR is merged.
