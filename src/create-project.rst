@@ -31,19 +31,4 @@ of the vendor dashboard, you can also export the labeled results and task URLs i
 
    The project dashboard
 
-If you click ``task link``, you can go to the annotation interface and
-start your work.
-
-.. figure:: https://s3-us-west-2.amazonaws.com/scalabel-public/demo/screenshots/annotation_interface_0.2.png
-   :alt: Task Interface
-
-   The annotation interface
-
-Edit the item index and hit ``Enter`` to jump to a specific item.
-
-To save the results of the current task, click ``Save``. Always save the task before refreshing or
-leaving the annotation interface. To disable saving, turn on the "demo mode" in the advanced options
-during project creation.
-
-Once done labeling the whole task, click ``Submit`` to indicate that the whole task is finished. This action marks
-the task as submitted in the project and vendor dashboards.
+Go to the annotation interface and start the work by clicking a task link.
