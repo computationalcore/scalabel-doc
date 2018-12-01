@@ -1,7 +1,7 @@
-Annotation Standard Index
+Annotation Instructions
 ===========================
 
-Scalabel is an open-sourced annotation web tool brought by `Berkeley DeepDrive <https://deepdrive.berkeley.edu/>`__.
+Scalabel is an open-sourced annotation web tool brought by `Berkeley DeepDrive <https://deepdrive.berkeley.edu/>`__. Below are the instructions we used to label BDD100K dataset.
 
 
 .. toctree::
