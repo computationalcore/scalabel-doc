@@ -9,6 +9,7 @@ Scalabel is an open-sourced annotation web tool brought by `Berkeley DeepDrive <
 
    /bbox_tracking.rst
    /segmentation.rst
+   /drivable.rst
    /segmentation_tracking.rst
 
 Report bugs and send questions to :bold:`bdd-label-help@googlegroups.com`.
