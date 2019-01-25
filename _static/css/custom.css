@@ -69,6 +69,11 @@ a {
     color: #163460;
 }
 
+.external {
+    color: navy;
+    text-decoration: underline;
+}
+
 a:hover {
     color: #2280bf;
 }
