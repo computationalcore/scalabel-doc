@@ -59,7 +59,7 @@ walkable part), or pedestrian zones (where usually cars are not
 allowed to drive during day-time). As shown in the second picture below,
 sidewalk in the middle of the road is still sidewalk.
 
-.. figure:: ../media/images/instructions/seg/sidewalk.png
+.. figure:: ../media/instructions/seg/sidewalk.png
     :width: 400px
 
 2.1.3 Parking
@@ -70,10 +70,10 @@ to park a vehicle. Different texture than road. In ambiguous
 cases where the driveway is not separated from the sidewalk
 (e.g. a building entrance), labeled as sidewalk.
 
-.. figure:: ../media/images/instructions/seg/parking1.png
+.. figure:: ../media/instructions/seg/parking1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/parking2.png
+.. figure:: ../media/instructions/seg/parking2.png
     :width: 400px
 
 The second image should be considered sidewalk.
@@ -86,7 +86,7 @@ All kind of rail tracks that are non-drivable by cars, e.g.
 subway and train rail tracks, while tram rail tracks are usually
 drivable by cars and therefore part of road.
 
-.. figure:: ../media/images/instructions/seg/track2.png
+.. figure:: ../media/instructions/seg/track2.png
     :width: 400px
 
 
@@ -106,10 +106,10 @@ of the bicycle. This class includes anything that is carried by
 the person, e.g. backpack, but not items touching the ground,
 e.g. trolleys.
 
-.. figure:: ../media/images/instructions/seg/person1.png
+.. figure:: ../media/instructions/seg/person1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/person2.png
+.. figure:: ../media/instructions/seg/person2.png
     :width: 300px
 
 
@@ -123,7 +123,7 @@ cars, cars without roof. Note that a visible driver of a car
 with roof can only be seen through the window. Since holes are
 not labeled, the human is included in the car label.
 
-.. figure:: ../media/images/instructions/bbox/rider.png
+.. figure:: ../media/instructions/bbox/rider.png
     :width: 400px
 
 
@@ -136,7 +136,7 @@ not labeled, the human is included in the car label.
 Car, jeep, SUV, small van with continuous body shape, caravan,
 no other trailers.
 
-.. figure:: ../media/images/instructions/bbox/car.png
+.. figure:: ../media/instructions/bbox/car.png
     :width: 400px
 
 
@@ -147,7 +147,7 @@ Truck, box truck, pickup truck. Including their trailers. Back
 part / loading area is physically separated from driving
 compartment.
 
-.. figure:: ../media/images/instructions/bbox/truck.png
+.. figure:: ../media/instructions/bbox/truck.png
     :width: 400px
 
 2.3.3 Bus
@@ -156,7 +156,7 @@ compartment.
 Bus for 9+ persons, public transport or long distance
 transport.
 
-.. figure:: ../media/images/instructions/bbox/bus.png
+.. figure:: ../media/instructions/bbox/bus.png
     :width: 400px
 
 2.3.4 Train
@@ -164,7 +164,7 @@ transport.
 
 Vehicle on rails, e.g. tram, train.
 
-.. figure:: ../media/images/instructions/seg/onrail2.png
+.. figure:: ../media/instructions/seg/onrail2.png
     :width: 400px
 
 2.3.5 Motorcycle
@@ -173,13 +173,13 @@ Vehicle on rails, e.g. tram, train.
 Motorbike, moped, scooter without the driver (otherwise that's a rider,
 see above)
 
-.. figure:: ../media/images/instructions/seg/motor1.png
+.. figure:: ../media/instructions/seg/motor1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/motor2.png
+.. figure:: ../media/instructions/seg/motor2.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/motor3.png
+.. figure:: ../media/instructions/seg/motor3.png
     :width: 400px
 
 
@@ -188,7 +188,7 @@ see above)
 
 Bicycle without the rider (otherwise that's a rider, see above)
 
-.. figure:: ../media/images/instructions/seg/bicycle.png
+.. figure:: ../media/instructions/seg/bicycle.png
     :width: 400px
 
 
@@ -197,7 +197,7 @@ Bicycle without the rider (otherwise that's a rider, see above)
 
 Like truck, but back is primarily for living/sleeping. Including caravan trailers.
 
-.. figure:: ../media/images/instructions/seg/caravan.png
+.. figure:: ../media/instructions/seg/caravan.png
     :width: 400px
 
 2.3.8 Trailer
@@ -206,27 +206,27 @@ Like truck, but back is primarily for living/sleeping. Including caravan trailer
 Trailers typically pulled by cars. Note that truck trailers are labeled truck,
 caravan trailers caravan, bicycle or horse trailers dynamic.
 
-.. figure:: ../media/images/instructions/seg/trailer1.png
+.. figure:: ../media/instructions/seg/trailer1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/trailer2.png
+.. figure:: ../media/instructions/seg/trailer2.png
     :width: 400px
 
 In the first image: the trailer is towed by car, so it's trailer. The second one
 should be labeled as truck.
 
-.. figure:: ../media/images/instructions/seg/trailer3.png
+.. figure:: ../media/instructions/seg/trailer3.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/trailer4.png
+.. figure:: ../media/instructions/seg/trailer4.png
     :width: 400px
 
 caravan
 
-.. figure:: ../media/images/instructions/seg/trailer5.png
+.. figure:: ../media/instructions/seg/trailer5.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/trailer6.png
+.. figure:: ../media/instructions/seg/trailer6.png
     :width: 400px
 
 Horse trailer and bicycle trailer: dynamic.
@@ -250,7 +250,7 @@ buildings.
 A bus stop is a designated place where buses stop for passengers
 to board or alight from a bus.
 
-.. figure:: ../media/images/instructions/seg/busstop.png
+.. figure:: ../media/instructions/seg/busstop.png
     :width: 400px
 
 
@@ -287,10 +287,10 @@ Tunnel wall and 'the dark'. No vehicles.
 2.4.8 Garage
 ###############################################################################
 
-.. figure:: ../media/images/instructions/seg/garage1.png
+.. figure:: ../media/instructions/seg/garage1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/garage2.png
+.. figure:: ../media/instructions/seg/garage2.png
     :width: 400px
 
 
@@ -308,10 +308,10 @@ side of a sign containing the information. Note that commercial
 signs attached to buildings become building, attached to poles
 or standing on their own become billboard.
 
-.. figure:: ../media/images/instructions/seg/banner1.png
+.. figure:: ../media/instructions/seg/banner1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/banner2.png
+.. figure:: ../media/instructions/seg/banner2.png
     :width: 400px
 
 
@@ -326,13 +326,13 @@ side of a sign containing the information. Note that commercial
 signs attached to buildings become building, attached to poles
 or standing on their own become billboard.
 
-.. figure:: ../media/images/instructions/seg/billboard1.png
+.. figure:: ../media/instructions/seg/billboard1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/billboard2.png
+.. figure:: ../media/instructions/seg/billboard2.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/billboard3.png
+.. figure:: ../media/instructions/seg/billboard3.png
     :width: 400px
 
 
@@ -341,7 +341,7 @@ or standing on their own become billboard.
 
 A connection point by which firefighters can tap into a water supply.
 
-.. figure:: ../media/images/instructions/seg/firehydrant.png
+.. figure:: ../media/instructions/seg/firehydrant.png
     :width: 200px
 
 
@@ -350,13 +350,13 @@ A connection point by which firefighters can tap into a water supply.
 
 speed camera and other non-signal devices.
 
-.. figure:: ../media/images/instructions/seg/divider1.png
+.. figure:: ../media/instructions/seg/divider1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/divider2.png
+.. figure:: ../media/instructions/seg/divider2.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/divider3.png
+.. figure:: ../media/instructions/seg/divider3.png
     :width: 400px
 
 
@@ -367,7 +367,7 @@ A physical box into which members of the public can deposit outgoing mail
 intended for collection by the agents of a country's postal service. The term
 can also refer to a private letter box for incoming mail.
 
-.. figure:: ../media/images/instructions/seg/mailbox.png
+.. figure:: ../media/instructions/seg/mailbox.png
     :width: 300px
 
 
@@ -376,13 +376,13 @@ can also refer to a private letter box for incoming mail.
 
 speed camera and other non-signal devices.
 
-.. figure:: ../media/images/instructions/seg/parkingsign1.png
+.. figure:: ../media/instructions/seg/parkingsign1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/parkingsign2.png
+.. figure:: ../media/instructions/seg/parkingsign2.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/parkingsign3.png
+.. figure:: ../media/instructions/seg/parkingsign3.png
     :width: 400px
 
 
@@ -409,14 +409,14 @@ the whole pole group with a single label with the "crowd" attribute on.
  As labeled in the second picture, only the light parts should be labeled as street light,
  the rest of the pole part should be labeled as pole.
 
-.. figure:: ../media/images/instructions/seg/streetlight.png
+.. figure:: ../media/instructions/seg/streetlight.png
     :width: 400px
 
 
 2.5.9 Traffic Cone
 ###############################################################################
 
-.. figure:: ../media/images/instructions/seg/cone.png
+.. figure:: ../media/instructions/seg/cone.png
     :width: 400px
 
 
@@ -425,10 +425,10 @@ the whole pole group with a single label with the "crowd" attribute on.
 
 Speed camera and other non-signal devices.
 
-.. figure:: ../media/images/instructions/seg/device1.png
+.. figure:: ../media/instructions/seg/device1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/device2.png
+.. figure:: ../media/instructions/seg/device2.png
     :width: 400px
 
 
@@ -449,16 +449,16 @@ side of a sign containing the information. Note that commercial
 signs attached to buildings become building, attached to poles
 or standing on their own become billboard.
 
-.. figure:: ../media/images/instructions/seg/sign1.png
+.. figure:: ../media/instructions/seg/sign1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/sign2.png
+.. figure:: ../media/instructions/seg/sign2.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/sign3.png
+.. figure:: ../media/instructions/seg/sign3.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/sign4.png
+.. figure:: ../media/instructions/seg/sign4.png
     :width: 400px
 
 
@@ -467,10 +467,10 @@ or standing on their own become billboard.
 
 speed camera and other non-signal devices.
 
-.. figure:: ../media/images/instructions/seg/frame1.png
+.. figure:: ../media/instructions/seg/frame1.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/frame2.png
+.. figure:: ../media/instructions/seg/frame2.png
     :width: 400px
 
 
@@ -500,10 +500,10 @@ possibly delimiting curb. Single grass stalks do not need to be
 annotated and get the label of the region they are growing
 on.
 
-.. figure:: ../media/images/instructions/seg/terrain2.png
+.. figure:: ../media/instructions/seg/terrain2.png
     :width: 400px
 
-.. figure:: ../media/images/instructions/seg/terrain3.png
+.. figure:: ../media/instructions/seg/terrain3.png
     :width: 400px
 
 
@@ -567,12 +567,12 @@ behind another car.
 
 Good example: annotate all visible parts of the object.
 
-.. figure:: ../media/images/instructions/bbox/good_occluded_example.png
+.. figure:: ../media/instructions/bbox/good_occluded_example.png
     :width: 600px
 
 Bad example: missed some visible parts of the object.
 
-.. figure:: ../media/images/instructions/bbox/bad_occluded_example.png
+.. figure:: ../media/instructions/bbox/bad_occluded_example.png
     :width: 600px
 
 
@@ -584,7 +584,7 @@ box specified for the object does not correspond to the full extent
 of the object e.g. an image of a person from the waist up, or a
 view of a car extending outside the image.
 
-.. figure:: ../media/images/instructions/bbox/occluded_truncated_example.png
+.. figure:: ../media/instructions/bbox/occluded_truncated_example.png
     :width: 600px
 
 
@@ -625,7 +625,7 @@ To zoom in/out, click the "+"/"-" buttons or the '+'/'-' keys.
  You can also zoom by scrolling while pressing the Ctrl key (Cmd for Mac users). You can
  drag the image around while pressing the Ctrl key (Cmd for Mac users).
 
-.. figure:: ../media/videos/2d_zoom-drag.gif
+.. figure:: ../media/docs/videos/2d_zoom-drag.gif
     :width: 600px
 
 4.1.3 Saving and submitting
@@ -659,7 +659,7 @@ Press 'd' to delete the latest vertex while drawing.
 
 * To convert straight edge to Bezier curve, click on the midpoint of the edge while pressing 'c'. Adjust the two control points to produce a tight-fitting curve. To recover a Bezier curve back to a straight edge, click on a control point of the curve while pressing 'c'.
 
-.. figure:: ../media/videos/seg2d_draw.gif
+.. figure:: ../media/docs/videos/seg2d_draw.gif
     :width: 600px
 
 
@@ -671,7 +671,7 @@ To link different polygons, select a segmentation label, and press Ctrl-L (Cmd-L
 or the Link button to start linking. Single click on all labels that you want to link,
 and hit Enter to finish linking.
 
-.. figure:: ../media/videos/seg2d_link.gif
+.. figure:: ../media/docs/videos/seg2d_link.gif
     :width: 600px
 
 
@@ -684,7 +684,7 @@ the Quick Draw button to start Quick Draw mode. First select a polygon to share 
 with, and then select the starting vertex and the ending vertex of the shared border.
 Press Alt to toggle between two possible shared paths. Hit Enter to end Quick Draw.
 
-.. figure:: ../media/videos/seg2d_quickdraw.gif
+.. figure:: ../media/docs/videos/seg2d_quickdraw.gif
     :width: 600px
 
 4.3 Labeling Segmentation Tracks
@@ -701,7 +701,7 @@ adjust each vertex at each frame.
 In a new frame, if adjusting individual vertices is laborious,
 you can move the entire label by dragging the label while pressing 'm'.
 
-.. figure:: ../media/videos/seg2d_tracking_move.gif
+.. figure:: ../media/docs/videos/seg2d_tracking_move.gif
     :width: 600px
 
 
@@ -712,7 +712,7 @@ In a new frame, sometimes it is easier to redraw the
 entire segmentation label than adjusting each existing vertex. Press Ctrl-delete (Cmd-delete for
 Mac users) to re-draw a segmentation label in the selected object track.
 
-    .. figure:: ../media/videos/seg2d_tracking_redraw.gif
+    .. figure:: ../media/docs/videos/seg2d_tracking_redraw.gif
         :width: 600px
 
 
@@ -724,7 +724,7 @@ For an object that disappears after certain frame, click
 The segmentation labels after this frame will be deleted. (Note: the video below demonstrates
 ending a track for bounding box. The case for segmentation is the same.)
 
-    .. figure:: ../media/videos/box2d_tracking_end-track.gif
+    .. figure:: ../media/docs/videos/box2d_tracking_end-track.gif
         :width: 600px
 
 
@@ -738,7 +738,7 @@ tracks that you want to link with this label. The tracks you choose to link appe
 lines. Click "Finish Track-Link" or hit Enter to finish this operation. (Note: the video below
 demonstrates track linking for bounding box. The case for segmentation is the same.)
 
-    .. figure:: ../media/videos/box2d_tracking_track-link.gif
+    .. figure:: ../media/docs/videos/box2d_tracking_track-link.gif
         :width: 600px
 
 
@@ -764,18 +764,18 @@ demonstrates track linking for bounding box. The case for segmentation is the sa
 * Below are some good and bad examples of the quality standard:
     Good:
 
-    .. figure:: ../media/images/instructions/seg/good1.png
+    .. figure:: ../media/instructions/seg/good1.png
         :width: 600px
 
-    .. figure:: ../media/images/instructions/seg/good2.png
+    .. figure:: ../media/instructions/seg/good2.png
             :width: 600px
 
     Bad:
 
-    .. figure:: ../media/images/instructions/seg/bad1.png
+    .. figure:: ../media/instructions/seg/bad1.png
         :width: 600px
 
-    .. figure:: ../media/images/instructions/seg/bad2.png
+    .. figure:: ../media/instructions/seg/bad2.png
         :width: 600px
 
 * Report bugs and send questions to :bold:`bdd-label-help@googlegroups.com`.
