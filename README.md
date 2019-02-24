@@ -1,3 +1,11 @@
+## Scalabel Usage Documentation and Labeling Instructions
+
+**Note** 
+- All the images and videos should go to media/ folder
+- media files should be organized as sub folders following the structure of rst files, such as `media/docs/login` and `media/instructions/drivable`.
+
+
+### Build
 
 Install dependency
 
