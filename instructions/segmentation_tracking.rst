@@ -18,82 +18,16 @@ there are also some newly added classes.
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | :bold:`Category` | :bold:`Class`                                                                                                                                                                                  |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Flat             | road, sidewalk, parking, rail track                                                                                                                                                            |
-+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Human            | person, rider                                                                                                                                                                                  |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Vehicle          | car, truck, bus, train, motorcycle, bicycle, caravan, trailer                                                                                                                                  |
-+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Construction     | building, bus stop, wall, fence, guard rail, bridge, tunnel, garage                                                                                                                            |
-+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Object           | banner, billboard, fire hydrant, lane divider, mail box, parking sign, pole, street light, traffic cone, traffic device, traffic light, traffic sign, traffic sign frame, trash can            |
-+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Nature           | vegetation, terrain                                                                                                                                                                            |
-+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Sky              | sky                                                                                                                                                                                            |
-+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Void             | dynamic, static, ground, ego vehicle                                                                                                                                                           |
+| Vehicle          | car, truck, bus, train, motorcycle, bicycle, other                                                                                                                                             |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-2.1 Flat
-========
 
-2.1.1 Road
-###############################################################################
-
-Part of ground on which cars usually drive, i.e. all lanes,
-all directions, all streets. Including the markings on the road.
-Areas only delimited by markings from the main road (no texture
-change) are also road, e.g. bicycle lanes, roundabout lanes, or
-parking spaces. This label does not include curbs.
-
-2.1.2 Sidewalk
-###############################################################################
-
-Part of ground designated for pedestrians or cyclists.
-Delimited from the road by some obstacle, e.g. curbs or poles
-(might be small), not only by markings. Often elevated compared
-to the road. Often located at the sides of a road. This label
-includes a possibly delimiting curb, traffic islands (the
-walkable part), or pedestrian zones (where usually cars are not
-allowed to drive during day-time). As shown in the second picture below,
-sidewalk in the middle of the road is still sidewalk.
-
-.. figure:: ../media/instructions/seg/sidewalk.png
-    :width: 400px
-
-2.1.3 Parking
-###############################################################################
-
-Parking lots and driveways. Not for regular driving, but rather
-to park a vehicle. Different texture than road. In ambiguous
-cases where the driveway is not separated from the sidewalk
-(e.g. a building entrance), labeled as sidewalk.
-
-.. figure:: ../media/instructions/seg/parking1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/parking2.png
-    :width: 400px
-
-The second image should be considered sidewalk.
-
-
-2.1.4 Rail Track
-###############################################################################
-
-All kind of rail tracks that are non-drivable by cars, e.g.
-subway and train rail tracks, while tram rail tracks are usually
-drivable by cars and therefore part of road.
-
-.. figure:: ../media/instructions/seg/track2.png
-    :width: 400px
-
-
-2.2 Human
+2.1 Human
 ===========
 
-2.2.1 Person
+2.1.1 Person
 ###############################################################################
 
 A human that satisfies the following criterion. Assume the human
@@ -113,7 +47,7 @@ e.g. trolleys.
     :width: 300px
 
 
-2.2.2 Rider
+2.1.2 Rider
 ###############################################################################
 
 A human that would use some device to move a distance of 1m.
@@ -127,10 +61,10 @@ not labeled, the human is included in the car label.
     :width: 400px
 
 
-2.3 Vehicle
+2.2 Vehicle
 ===========
 
-2.3.1 Car
+2.2.1 Car
 ###############################################################################
 
 Car, jeep, SUV, small van with continuous body shape, caravan,
@@ -139,8 +73,14 @@ no other trailers.
 .. figure:: ../media/instructions/bbox/car.png
     :width: 400px
 
+Caravans are also labeled as car. Caravan is like truck, but back is primarily
+for living/sleeping. Including caravan trailers.
 
-2.3.2 Truck
+  .. figure:: ../media/instructions/seg/caravan.png
+      :width: 400px
+
+
+2.2.2 Truck
 ###############################################################################
 
 Truck, box truck, pickup truck. Including their trailers. Back
@@ -150,7 +90,7 @@ compartment.
 .. figure:: ../media/instructions/bbox/truck.png
     :width: 400px
 
-2.3.3 Bus
+2.2.3 Bus
 ###############################################################################
 
 Bus for 9+ persons, public transport or long distance
@@ -159,7 +99,7 @@ transport.
 .. figure:: ../media/instructions/bbox/bus.png
     :width: 400px
 
-2.3.4 Train
+2.2.4 Train
 ###############################################################################
 
 Vehicle on rails, e.g. tram, train.
@@ -167,7 +107,7 @@ Vehicle on rails, e.g. tram, train.
 .. figure:: ../media/instructions/seg/onrail2.png
     :width: 400px
 
-2.3.5 Motorcycle
+2.2.5 Motorcycle
 ###############################################################################
 
 Motorbike, moped, scooter without the driver (otherwise that's a rider,
@@ -183,7 +123,7 @@ see above)
     :width: 400px
 
 
-2.3.6 Bicycle
+2.2.6 Bicycle
 ###############################################################################
 
 Bicycle without the rider (otherwise that's a rider, see above)
@@ -192,19 +132,13 @@ Bicycle without the rider (otherwise that's a rider, see above)
     :width: 400px
 
 
-2.3.7 Caravan
+2.2.7 Other
 ###############################################################################
 
-Like truck, but back is primarily for living/sleeping. Including caravan trailers.
-
-.. figure:: ../media/instructions/seg/caravan.png
-    :width: 400px
-
-2.3.8 Trailer
-###############################################################################
+All other vehicles, for example trailer.
 
 Trailers typically pulled by cars. Note that truck trailers are labeled truck,
-caravan trailers caravan, bicycle or horse trailers dynamic.
+caravan trailers other.
 
 .. figure:: ../media/instructions/seg/trailer1.png
     :width: 400px
@@ -221,337 +155,14 @@ should be labeled as truck.
 .. figure:: ../media/instructions/seg/trailer4.png
     :width: 400px
 
-caravan
-
 .. figure:: ../media/instructions/seg/trailer5.png
     :width: 400px
 
 .. figure:: ../media/instructions/seg/trailer6.png
     :width: 400px
 
-Horse trailer and bicycle trailer: dynamic.
-
-
-2.4 Construction
-==================
-
-2.4.1 Building
-###############################################################################
-
-Building, skyscraper, house, bus stop building, garage, car port.
-If a building has a glass wall that you can see through, the
-wall is still building. Includes scaffolding attached to
-buildings.
-
-
-2.4.2 Bus Stop
-###############################################################################
-
-A bus stop is a designated place where buses stop for passengers
-to board or alight from a bus.
-
-.. figure:: ../media/instructions/seg/busstop.png
+.. figure:: ../media/instructions/seg/other.jpg
     :width: 400px
-
-
-2.4.3 Wall
-###############################################################################
-
-Individual standing wall. Not part of a building.
-
-
-2.4.4 Fence
-###############################################################################
-
-Fence including any holes.
-
-
-2.4.5 Guard Rail
-###############################################################################
-
-All types of guard rails/crash barriers.
-
-
-2.4.6 Bridge
-###############################################################################
-
-Only the bridge. Fences, people or vehicles on top are labeled separately.
-
-
-2.4.7 Tunnel
-###############################################################################
-
-Tunnel wall and 'the dark'. No vehicles.
-
-
-2.4.8 Garage
-###############################################################################
-
-.. figure:: ../media/instructions/seg/garage1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/garage2.png
-    :width: 400px
-
-
-2.5 Object
-============
-
-2.5.1 Banner
-###############################################################################
-
-Sign installed from the state/city authority, usually for
-information of the driver/cyclist/pedestrian in an everyday
-traffic scene, e.g. traffic- signs, direction signs - without
-their poles. No ads/commercial signs. The front side and back
-side of a sign containing the information. Note that commercial
-signs attached to buildings become building, attached to poles
-or standing on their own become billboard.
-
-.. figure:: ../media/instructions/seg/banner1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/banner2.png
-    :width: 400px
-
-
-2.5.2 Billboard
-###############################################################################
-
-Sign installed from the state/city authority, usually for
-information of the driver/cyclist/pedestrian in an everyday
-traffic scene, e.g. traffic- signs, direction signs - without
-their poles. No ads/commercial signs. The front side and back
-side of a sign containing the information. Note that commercial
-signs attached to buildings become building, attached to poles
-or standing on their own become billboard.
-
-.. figure:: ../media/instructions/seg/billboard1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/billboard2.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/billboard3.png
-    :width: 400px
-
-
-2.5.3 Fire Hydrant
-###############################################################################
-
-A connection point by which firefighters can tap into a water supply.
-
-.. figure:: ../media/instructions/seg/firehydrant.png
-    :width: 200px
-
-
-2.5.4 Lane Divider
-###############################################################################
-
-speed camera and other non-signal devices.
-
-.. figure:: ../media/instructions/seg/divider1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/divider2.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/divider3.png
-    :width: 400px
-
-
-2.5.5 Mail Box
-###############################################################################
-
-A physical box into which members of the public can deposit outgoing mail
-intended for collection by the agents of a country's postal service. The term
-can also refer to a private letter box for incoming mail.
-
-.. figure:: ../media/instructions/seg/mailbox.png
-    :width: 300px
-
-
-2.5.6 Parking Sign
-###############################################################################
-
-speed camera and other non-signal devices.
-
-.. figure:: ../media/instructions/seg/parkingsign1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/parkingsign2.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/parkingsign3.png
-    :width: 400px
-
-
-2.5.7 Pole
-###############################################################################
-
-Small mainly vertically oriented pole. E.g. sign pole, traffic
-light poles. If the pole has a horizontal part (often for
-traffic light poles) this part is also considered pole. If there
-are things mounted at the pole that are neither traffic light
-nor traffic sign (e.g. street lights) and that have a diameter
-(in pixels) of at most twice the diameter of the pole, then
-these things might also be labeled pole. If they are larger,
-they are labeled static.
-
-Multiple poles that are cumbersome to label individually. If the gap between
-two poles has at most as many pixels width as a single pole, you can label
-the whole pole group with a single label with the "crowd" attribute on.
-
-
-2.5.8 Street Light
-###############################################################################
-
- As labeled in the second picture, only the light parts should be labeled as street light,
- the rest of the pole part should be labeled as pole.
-
-.. figure:: ../media/instructions/seg/streetlight.png
-    :width: 400px
-
-
-2.5.9 Traffic Cone
-###############################################################################
-
-.. figure:: ../media/instructions/seg/cone.png
-    :width: 400px
-
-
-2.5.10 Traffic Device
-###############################################################################
-
-Speed camera and other non-signal devices.
-
-.. figure:: ../media/instructions/seg/device1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/device2.png
-    :width: 400px
-
-
-2.5.11 Traffic Light
-###############################################################################
-
-The traffic light box without its poles.
-
-
-2.5.12 Traffic Sign
-###############################################################################
-
-Sign installed from the state/city authority, usually for
-information of the driver/cyclist/pedestrian in an everyday
-traffic scene, e.g. traffic- signs, direction signs - without
-their poles. No ads/commercial signs. The front side and back
-side of a sign containing the information. Note that commercial
-signs attached to buildings become building, attached to poles
-or standing on their own become billboard.
-
-.. figure:: ../media/instructions/seg/sign1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/sign2.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/sign3.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/sign4.png
-    :width: 400px
-
-
-2.5.13 Traffic Sign Frame
-###############################################################################
-
-speed camera and other non-signal devices.
-
-.. figure:: ../media/instructions/seg/frame1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/frame2.png
-    :width: 400px
-
-
-2.5.14 Trash Can
-###############################################################################
-
-
-2.6 Nature
-=============
-
-2.6.1 Vegetation
-###############################################################################
-
-Tree, hedge, all kinds of vertical vegetation. Plants attached to
-buildings are usually not annotated separately and labeled
-building as well. If growing at the side of a wall or building,
-marked as vegetation if it covers a substantial part of the
-surface (more than 20%).
-
-
-2.6.2 Terrain
-###############################################################################
-
-Grass, all kinds of horizontal vegetation, soil or sand. These
-areas are not meant to be driven on. This label includes a
-possibly delimiting curb. Single grass stalks do not need to be
-annotated and get the label of the region they are growing
-on.
-
-.. figure:: ../media/instructions/seg/terrain2.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/terrain3.png
-    :width: 400px
-
-
-2.7 Sky
-========
-
-2.7.1 Sky
-###############################################################################
-
-Open sky, without leaves of tree. Includes thin electrical wires in front of the sky.
-
-
-2.8 Void
-===========
-
-
-2.8.1 Dynamic
-###############################################################################
-
-Things that might not be there anymore the next day/hour/minute:
-Movable trash bin, buggy, bag, wheelchair, animal.
-
-
-2.8.2 Static
-###############################################################################
-
-Clutter in the background that is not distinguishable. Objects
-that do not match any of the above. For example, visible parts
-of the ego vehicle, mountains, street lights. Also rather small
-regions in the image that are some of the classes above, but
-that are cumbersome to label precisely might be annotated
-static.
-
-
-2.8.3 Ground
-###############################################################################
-
-All other forms of horizontal ground-level structures that do not
-match any of the above. For example areas that cars and
-pedestrians share all-day, roundabouts that are flat but
-delimited from the road by a curb, elevated parts of traffic
-islands, water. Void label for flat areas.
-
-
-2.8.4 Ego Vehicle
-###############################################################################
-
-The vehicle that the camera is mounted on.
 
 
 3. Label Attributes
