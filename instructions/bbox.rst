@@ -99,7 +99,7 @@ see above)
 2.2.6 Bike
 ########################
 
-Bicycle without the rider (otherwise that's a rider, see above)
+Bicycle with or without the rider
 
 .. figure:: ../media/instructions/bbox/bike.png
     :width: 400px
