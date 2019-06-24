@@ -42,7 +42,7 @@ create your annotation project.
 
       ::
 
-        go get github.com/aws/aws-sdk-go github.com/mitchellh/mapstructure gopkg.in/yaml.v2 github.com/satori/go.uuid
+        bash scripts/install_go_packages.sh
         go build -i -o ./bin/scalabel ./server/http
         
       (For Windows users, build with:
