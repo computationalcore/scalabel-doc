@@ -38,14 +38,21 @@ First please log on to your AWS cognito console. We assume you have already set 
 
     Then please select the `General settings` on the sidebar, and look at the `Pool Id` again. The first several words of `Pool Id` is the `region`. The format of `region` is `"us-location-number"`, for example, `"us-east-1"` in the picture.
 
-3. `client id`
+3. `domainName`
+
+    .. image:: ../media/docs/user/domainName.png
+
+    Find the value of the domainName or set it by yourself if you haven't set it yet. And then on the right you will find the `Pool Id`. Copy the value and paste it into your `user_management_config.yml` to the corresponding variable as a string. 
+
+
+4. `client id`
 
     .. image:: ../media/docs/user/client_id.png
 
     Select `App clients` on the sidebar. Then copy the value of `App client id` to `clientId` in your `user_management_config.yml`.
 
 
-4. `client secret`
+5. `client secret`
 
     .. image:: ../media/docs/user/client_1.png
 
@@ -55,24 +62,24 @@ First please log on to your AWS cognito console. We assume you have already set 
 
     Now you can see more details of App clients. Copy the value of `app client secret` to `clientSecret` in your `user_management_config.yml`.
 
-5. `redirectUri` and `logOutUri`
+6. `redirectUri` and `logOutUri`
 
     .. image:: ../media/docs/user/callback_logout_url.png
 
     Select `App clients settings` on the sidebar. Then you will see `Callback URL(s)` and `Sign out URL(s)` on the righr. Copy the value of `Callback URL(s)` to `redirectUri`, and the value of `Sign out URL(s)` to `logOutUri` in your `user_management_config.yml`.
 
 
-6. `awsTokenURL`
+7. `awsTokenURL`
 
     .. image:: ../media/docs/user/aws_token_url.png
 
     Select `Domain name` on the sidebar. Copy the whole url under `Domain prefix` and add "/oauth2/token" as the postfix, so your `awsTokenUrl` will be in this form: `https://...amazoncognito.com/oauth2/token`. Fill `awsTokenURL` with this value in your `user_management_config.yml`.
 
-7. `awsJwkUrl`
+8. `awsJwkUrl`
 
     This value must be set to `"https://cognito-idp.%v.amazonaws.com/%v/.well-known/jwks.json"`. Since we are using AWS Cognito, this is the url that allows us to download all the public keys from AWS.
 
-8. `usermanagement`
+9. `usermanagement`
 
     At last, please make sure your user management is set to be 'on'.
 
