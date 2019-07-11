@@ -43,8 +43,8 @@ e.g. trolleys.
 A human that would use some device to move a distance of 1m.
 Includes, riders/drivers of bicycle, motorbike, scooter,
 skateboards, horses, roller-blades, wheel-chairs, road cleaning
-cars, cars without roof, baby carts. The vehicle that the rider is on (
-    for example, bicycle, motorcycle, or scooter) should be labeled separately.
+cars, cars without roof, baby carts. The vehicle that the rider
+is on, such as bicycle, motorcycle, and scooter, should be labeled separately.
 However, do not label a visible driver of any car with roof.
 
 .. figure:: ../media/instructions/bbox/rider.png
@@ -95,8 +95,8 @@ do not include trailers.
 2.2.4 Motorcycle
 ########################
 
-Motorbike, moped, or scooter with a seat. A scooter without a seat should be annotated
- as "other vehicle". Annotate the rider separately.
+Motorbike, moped, or scooter with a seat. A scooter without a
+seat should be annotated as "other vehicle". Annotate the rider separately.
 
 .. figure:: ../media/instructions/bbox/motor.png
     :width: 400px
