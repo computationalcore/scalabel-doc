@@ -20,9 +20,9 @@ there are also some newly added classes.
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Flat             | road, sidewalk, parking, rail track                                                                                                                                                            |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Human            | person, rider                                                                                                                                                                                  |
+| Human            | pedestrian, rider, other person                                                                                                                                                                |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Vehicle          | car, truck, bus, train, motorcycle, bicycle, caravan, trailer                                                                                                                                  |
+| Vehicle          | bicycle, bus, car, motorcycle, trailer, train, truck, van, other vehicle                                                                                                                       |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Construction     | building, bus stop, wall, fence, guard rail, bridge, tunnel, garage                                                                                                                            |
 +------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -93,55 +93,119 @@ drivable by cars and therefore part of road.
 2.2 Human
 ===========
 
-2.2.1 Person
-###############################################################################
+2.2.1 Pedestrian
+########################
 
-A human that satisfies the following criterion. Assume the human
-moved a distance of 1m and stopped again. If the human would
-walk, the label is person, otherwise not. Examples are people
-walking, standing or sitting on the ground, on a bench, on a
-chair. This class also includes toddlers, someone pushing a
+Examples are people
+walking and standing. This class also includes toddlers standing
+or walking on the ground, and someone pushing a
 bicycle or standing next to it with both legs on the same side
 of the bicycle. This class includes anything that is carried by
 the person, e.g. backpack, but not items touching the ground,
 e.g. trolleys.
 
-.. figure:: ../media/instructions/seg/person1.png
+.. figure:: ../media/instructions/bbox/person.png
     :width: 400px
 
-.. figure:: ../media/instructions/seg/person2.png
-    :width: 300px
-
-
 2.2.2 Rider
-###############################################################################
+########################
 
 A human that would use some device to move a distance of 1m.
 Includes, riders/drivers of bicycle, motorbike, scooter,
 skateboards, horses, roller-blades, wheel-chairs, road cleaning
-cars, cars without roof. Note that a visible driver of a car
-with roof can only be seen through the window. Since holes are
-not labeled, the human is included in the car label.
+cars, cars without roof, baby carts. The vehicle that the rider is on (
+    for example, bicycle, motorcycle, or scooter) should be labeled separately.
+However, do not label a visible driver of any car with roof.
 
 .. figure:: ../media/instructions/bbox/rider.png
     :width: 400px
 
+2.2.3 Other Person
+########################
+
+All other humans, for example a sitting person:
+
+.. figure:: ../media/instructions/seg/person_sitting.jpg
+    :width: 400px
 
 2.3 Vehicle
 ===========
 
-2.3.1 Car
-###############################################################################
+2.3.1 Bicycle
+########################
 
-Car, jeep, SUV, small van with continuous body shape, caravan,
-no other trailers.
+Bicycle with or without the rider
+
+.. figure:: ../media/instructions/bbox/bike.png
+    :width: 400px
+
+For a bicycle group, turn on the "crowd" attribute. Example:
+
+.. figure:: ../media/instructions/seg/bike_group.jpg
+    :width: 400px
+
+2.3.2 Bus
+########################
+
+Bus for 9+ persons, public transport or long distance
+transport.
+
+.. figure:: ../media/instructions/bbox/bus.png
+    :width: 400px
+
+2.3.3 Car
+########################
+
+Sedan, convertible, coupe, or SUV with continuous body shape;
+do not include trailers.
 
 .. figure:: ../media/instructions/bbox/car.png
     :width: 400px
 
+2.3.4 Motorcycle
+########################
 
-2.3.2 Truck
+Motorbike, moped, or scooter with a seat. A scooter without a seat should be annotated
+ as "other vehicle". Annotate the rider separately.
+
+.. figure:: ../media/instructions/bbox/motor.png
+    :width: 400px
+
+2.3.5 Trailer
 ###############################################################################
+
+Trailers typically pulled by cars. Note that truck trailers are labeled truck.
+
+.. figure:: ../media/instructions/seg/trailer1.png
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/trailer4.png
+    :width: 400px
+
+In the first image: the trailer is towed by car, so it's trailer.
+
+.. figure:: ../media/instructions/seg/trailer3.png
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/trailer5.png
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/trailer6.png
+    :width: 400px
+
+This one should be labeled as truck with a trailer:
+
+.. figure:: ../media/instructions/seg/trailer2.png
+    :width: 400px
+
+2.3.6 Train
+########################
+
+.. figure:: ../media/instructions/bbox/train.png
+    :width: 400px
+
+2.3.7 Truck
+########################
 
 Truck, box truck, pickup truck. Including their trailers. Back
 part / loading area is physically separated from driving
@@ -150,86 +214,38 @@ compartment.
 .. figure:: ../media/instructions/bbox/truck.png
     :width: 400px
 
-2.3.3 Bus
+2.3.8 Van
 ###############################################################################
 
-Bus for 9+ persons, public transport or long distance
-transport.
-
-.. figure:: ../media/instructions/bbox/bus.png
-    :width: 400px
-
-2.3.4 Train
-###############################################################################
-
-Vehicle on rails, e.g. tram, train.
-
-.. figure:: ../media/instructions/seg/onrail2.png
-    :width: 400px
-
-2.3.5 Motorcycle
-###############################################################################
-
-Motorbike, moped, scooter without the driver (otherwise that's a rider,
-see above)
-
-.. figure:: ../media/instructions/seg/motor1.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/motor2.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/motor3.png
-    :width: 400px
-
-
-2.3.6 Bicycle
-###############################################################################
-
-Bicycle without the rider (otherwise that's a rider, see above)
-
-.. figure:: ../media/instructions/seg/bicycle.png
-    :width: 400px
-
-
-2.3.7 Caravan
-###############################################################################
-
-Like truck, but back is primarily for living/sleeping. Including caravan trailers.
+Box-shaped vehicle that is used to transport either people or goods, including MPV, 
+caravans, and delivery vans.
 
 .. figure:: ../media/instructions/seg/caravan.png
     :width: 400px
 
-2.3.8 Trailer
+.. figure:: ../media/instructions/seg/van1.jpg
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/van2.jpg
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/van3.jpg
+    :width: 400px
+
+2.3.9 Other Vehicle
 ###############################################################################
 
-Trailers typically pulled by cars. Note that truck trailers are labeled truck,
-caravan trailers caravan, bicycle or horse trailers dynamic.
+All other forms of vehicles. For example, scooter, forklift, baby cart etc.
 
-.. figure:: ../media/instructions/seg/trailer1.png
+.. figure:: ../media/instructions/seg/scooter.jpg
     :width: 400px
 
-.. figure:: ../media/instructions/seg/trailer2.png
+.. figure:: ../media/instructions/seg/forklift.jpg
     :width: 400px
 
-In the first image: the trailer is towed by car, so it's trailer. The second one
-should be labeled as truck.
-
-.. figure:: ../media/instructions/seg/trailer3.png
+.. figure:: ../media/instructions/seg/cart.png
     :width: 400px
 
-.. figure:: ../media/instructions/seg/trailer4.png
-    :width: 400px
-
-caravan
-
-.. figure:: ../media/instructions/seg/trailer5.png
-    :width: 400px
-
-.. figure:: ../media/instructions/seg/trailer6.png
-    :width: 400px
-
-Horse trailer and bicycle trailer: dynamic.
 
 
 2.4 Construction

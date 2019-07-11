@@ -5,28 +5,30 @@
 Bounding Box Tracking
 --------------------------------------------
 
-1. Your Mission
+1. Task
 ~~~~~~~~~~~~~~~~
-Your mission is to annotate bounding box tracks around the following
-10 objects as well their attributes (e.g. occluded, truncated):
+The task is to annotate bounding box tracks around the following objects as well their attributes (occluded, truncated, and crowded):
 
 2. Label Categories
 ~~~~~~~~~~~~~~~~~~~
 
-* Human: person, rider
-* Vehicle: car, truck, bus, train, motorcycle, bike
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :bold:`Category` | :bold:`Class`                                                                                                                                                                                  |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Human            | pedestrian, rider, other person                                                                                                                                                                |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Vehicle          | bicycle, bus, car, motorcycle, trailer, train, truck, van, other vehicle                                                                                                                       |
++------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 2.1 Human
 ===========
 
-2.1.1 Person
+2.1.1 Pedestrian
 ########################
 
-A human that satisfies the following criterion. Assume the human
-moved a distance of 1m and stopped again. If the human would
-walk, the label is person, otherwise not. Examples are people
-walking, standing or sitting on the ground, on a bench, on a
-chair. This class also includes toddlers, someone pushing a
+Examples are people
+walking and standing. This class also includes toddlers standing
+or walking on the ground, and someone pushing a
 bicycle or standing next to it with both legs on the same side
 of the bicycle. This class includes anything that is carried by
 the person, e.g. backpack, but not items touching the ground,
@@ -41,26 +43,98 @@ e.g. trolleys.
 A human that would use some device to move a distance of 1m.
 Includes, riders/drivers of bicycle, motorbike, scooter,
 skateboards, horses, roller-blades, wheel-chairs, road cleaning
-cars, cars without roof. Note that a visible driver of a car
-with roof can only be seen through the window. Since holes are
-not labeled, the human is included in the car label.
+cars, cars without roof, baby carts. The vehicle that the rider is on (
+    for example, bicycle, motorcycle, or scooter) should be labeled separately.
+However, do not label a visible driver of any car with roof.
 
 .. figure:: ../media/instructions/bbox/rider.png
+    :width: 400px
+
+2.1.3 Other Person
+########################
+
+All other humans, for example a sitting person:
+
+.. figure:: ../media/instructions/seg/person_sitting.jpg
     :width: 400px
 
 2.2 Vehicle
 ===========
 
-2.2.1 Car
+2.2.1 Bicycle
 ########################
 
-Car, jeep, SUV, small van with continuous body shape, caravan,
-no other trailers.
+Bicycle with or without the rider
+
+.. figure:: ../media/instructions/bbox/bike.png
+    :width: 400px
+
+For a bicycle group, turn on the "crowd" attribute. Example:
+
+.. figure:: ../media/instructions/seg/bike_group.jpg
+    :width: 400px
+
+2.2.2 Bus
+########################
+
+Bus for 9+ persons, public transport or long distance
+transport.
+
+.. figure:: ../media/instructions/bbox/bus.png
+    :width: 400px
+
+2.2.3 Car
+########################
+
+Sedan, convertible, coupe, or SUV with continuous body shape;
+do not include trailers.
 
 .. figure:: ../media/instructions/bbox/car.png
     :width: 400px
 
-2.2.2 Truck
+2.2.4 Motorcycle
+########################
+
+Motorbike, moped, or scooter with a seat. A scooter without a seat should be annotated
+ as "other vehicle". Annotate the rider separately.
+
+.. figure:: ../media/instructions/bbox/motor.png
+    :width: 400px
+
+2.2.5 Trailer
+###############################################################################
+
+Trailers typically pulled by cars. Note that truck trailers are labeled truck.
+
+.. figure:: ../media/instructions/seg/trailer1.png
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/trailer4.png
+    :width: 400px
+
+In the first image: the trailer is towed by car, so it's trailer.
+
+.. figure:: ../media/instructions/seg/trailer3.png
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/trailer5.png
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/trailer6.png
+    :width: 400px
+
+This one should be labeled as truck with a trailer:
+
+.. figure:: ../media/instructions/seg/trailer2.png
+    :width: 400px
+
+2.2.6 Train
+########################
+
+.. figure:: ../media/instructions/bbox/train.png
+    :width: 400px
+
+2.2.7 Truck
 ########################
 
 Truck, box truck, pickup truck. Including their trailers. Back
@@ -70,36 +144,36 @@ compartment.
 .. figure:: ../media/instructions/bbox/truck.png
     :width: 400px
 
-2.2.3 Bus
-########################
+2.2.8 Van
+###############################################################################
 
-Bus for 9+ persons, public transport or long distance
-transport.
+Box-shaped vehicle that is used to transport either people or goods, including MPV, 
+caravans, and delivery vans.
 
-.. figure:: ../media/instructions/bbox/bus.png
+.. figure:: ../media/instructions/seg/caravan.png
     :width: 400px
 
-2.2.4 Train
-########################
-
-.. figure:: ../media/instructions/bbox/train.png
+.. figure:: ../media/instructions/seg/van1.jpg
     :width: 400px
 
-2.2.5 Motorcycle
-########################
-
-Motorbike, moped, scooter without the driver (otherwise that's a rider,
-see above)
-
-.. figure:: ../media/instructions/bbox/motor.png
+.. figure:: ../media/instructions/seg/van2.jpg
     :width: 400px
 
-2.2.6 Bike
-########################
+.. figure:: ../media/instructions/seg/van3.jpg
+    :width: 400px
 
-Bicycle without the rider (otherwise that's a rider, see above)
+2.2.9 Other Vehicle
+###############################################################################
 
-.. figure:: ../media/instructions/bbox/bike.png
+All other forms of vehicles. For example, scooter, forklift, baby cart etc.
+
+.. figure:: ../media/instructions/seg/scooter.jpg
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/forklift.jpg
+    :width: 400px
+
+.. figure:: ../media/instructions/seg/cart.png
     :width: 400px
 
 
@@ -137,12 +211,13 @@ view of a car extending outside the image.
     :width: 600px
 
 
-3.3 Traffic Light Color
-=======================
+3.3 Crowd
+====================
 
-For traffic lights, identify the color by selecting "G" (green),
-"Y" (yellow), or "R" (red). If neither of the color applies, select
-"NA".
+Normally each label only contains one instance. However, if the
+boundary between such instances cannot be clearly seen, the
+whole crowd can labeled together. Turn the "crowd" attribute on
+for crowd labels.
 
 
 4. Basic Operations
