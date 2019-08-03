@@ -7,7 +7,7 @@ The user management has two parts, first is User Authentication and second is us
 Overview
 -----------
 
-    Our user management is set up in the file `user_management_config.yml`. You have to set `usermanagement` to `"on"` to enable the user management. Once you have enabled the user management, you are going to set up several variables realted to AWS Cognito userpool properly. We highly recomand you to set up your AWS Cognito Userpool before you enable the user management.
+    Our user management is set up in the file `user_management_config.yml`. You have to set `usermanagement` to `"on"` to enable the user management. Once you have enabled the user management, you are going to set up several variables related to AWS Cognito userpool properly. We highly recommend you to set up your AWS Cognito Userpool before you enable the user management.
 
     Please open the file `app/config/user_management_config.yml`.
 
