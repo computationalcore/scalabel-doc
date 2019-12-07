@@ -84,7 +84,7 @@ First please log on to your AWS cognito console. We assume you have already set 
     At last, please make sure your user management is set to be 'on'.
 
 
-Luanch the server
+Launch the server
 --------------------
 
     when you launch the server, in stead of `data/config.yml`, please use `app/config/user_management_config.yml`.
